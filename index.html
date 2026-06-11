@@ -68,7 +68,7 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .mc .mi{display:flex;flex-wrap:wrap;gap:2px 5px;font-size:.62rem;color:var(--m);margin-top:4px}
 .mc .mi span{background:#1a2235;padding:2px 5px;border-radius:3px}
 [data-theme="light"] .mc .mi span{background:#f1f5f9}
-.mc .status-dot{position:absolute;top:7px;right:7px;width:6px;height:6px;border-radius:50%;z-index:1}
+.mc .status-dot{position:absolute;top:6px;right:6px;width:5px;height:5px;border-radius:50%;z-index:1}
 .mc .status-dot.upcoming{background:var(--a)}.mc .status-dot.live{background:var(--red);animation:pulse 1s infinite}.mc .status-dot.done{background:var(--m)}
 
 /* Back to top */
@@ -212,8 +212,11 @@ function buildCard(m,isKO){
   // Determine match status
   const matchDate=matchToDate(m);
   const now=new Date();let status='';
-  const isLive=matchDate&&matchDate<=now&&!hasRes;
-  if(hasRes)status='done';else if(isLive)status='live';else status='upcoming';
+  const matchState=res?.state||'';
+  if(matchState==='post')status='done';
+  else if(matchState==='in'||(matchDate&&matchDate<=now&&!hasRes))status='live';
+  else if(hasRes)status='done';
+  else status='upcoming';
   let scoreDisplay='';
   if(hasRes)scoreDisplay=`<div class="score-big">${res.t1s} - ${res.t2s}</div>`;
   else if(isLive)scoreDisplay=`<div class="live-badge">LIVE</div>`;
@@ -366,7 +369,7 @@ function fetchScoresJSON(){
       Object.entries(data.matches||{}).forEach(([mn,sc])=>{
         const old=RS[mn];
         if(!old||old.t1s!==sc.t1s||old.t2s!==sc.t2s){
-          RS[mn]={t1s:sc.t1s,t2s:sc.t2s,notes:''};sR();updated++;
+          RS[mn]={t1s:sc.t1s,t2s:sc.t2s,notes:'',state:sc.state||''};sR();updated++;
         }
       });
       if(updated>0){
