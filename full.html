@@ -56,9 +56,10 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .match-card .minfo{display:flex;flex-wrap:wrap;gap:3px 6px;font-size:.7rem;color:var(--muted);margin-top:6px}
 .match-card .minfo span{background:#1a2235;padding:2px 6px;border-radius:4px}
 [data-theme="light"] .match-card .minfo span{background:#f1f5f9}
-.match-card .detail-link{text-align:center;margin-top:8px}
-.match-card .detail-link a{color:var(--accent);font-size:.73rem;text-decoration:none;border:1px solid var(--accent);padding:4px 12px;border-radius:14px;transition:all .2s;display:inline-block}
-.match-card .detail-link a:hover{background:var(--accent);color:#000}
+.match-card .status-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%}
+.match-card .status-dot.upcoming{background:var(--accent)}.match-card .status-dot.live{background:#ef4444;animation:pulse 1.5s infinite}.match-card .status-dot.done{background:var(--muted)}
+.match-card.played{opacity:.7}.match-card.played:hover{opacity:.9}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
 /* Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -107,6 +108,7 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀️ 浅色</button>
 <div class="header"><h1>2026 美加墨世界杯</h1><div class="sub">FIFA WORLD CUP · 104场 · 48队 · 16城</div></div>
 <div class="countdown-bar"><span id="cdNext">距下一场：</span><span class="cd-timer" id="cdTimer">--</span></div>
+<div class="progress-wrap" style="border-bottom:1px solid var(--border)"><div style="height:3px;background:var(--border)"><div id="progressFill" style="height:100%;background:var(--accent);transition:width .5s;width:0%"></div></div><div style="display:flex;justify-content:space-between;padding:3px 14px;font-size:.65rem;color:var(--muted);background:#0f172a"><span id="progressLabel">0/104 场已赛</span><span id="progressPct">0%</span></div></div>
 <div class="container">
   <div class="toolbar">
     <input type="text" id="searchInput" placeholder="🔍 搜索球队/城市/场馆…" oninput="AF()">
@@ -201,6 +203,8 @@ function updateCD(){const all=[...GM,...KO];const now=new Date();let next=null;f
 function getTime(m){return tz==='bj'?m[2]:m[3];}
 // Store all match data globally for easy lookup
 const ALL_MATCHES={};
+function matchToDate(m){const[_,mo,da]=m[1].match(/(\d+)\.(\d+)/)||[];if(!mo)return null;const[hr,mi]=m[2].split(':').map(Number);return new Date(2026,parseInt(mo)-1,parseInt(da),hr,mi);}
+function updateProgress(){const played=Object.keys(RESULTS).length;document.getElementById('progressFill').style.width=(played/104*100)+'%';document.getElementById('progressLabel').textContent=played+'/104 场已赛';document.getElementById('progressPct').textContent=Math.round(played/104*100)+'%';}
 function buildCard(m,isKO){
   const[mn,date,bj,local,t1,t2,g,rnd,skey]=m,s=S(skey),isOpener=(mn==='M1'),isFinal=(rnd==='决赛');
   let cls='match-card';if(isFinal)cls+=' final-match';else if(isOpener)cls+=' opener';else if(m.length>9&&m[9])cls+=' hl';
@@ -209,7 +213,8 @@ function buildCard(m,isKO){
   const scoreHTML=hasRes?`<div class="score">${res.t1s} - ${res.t2s}</div>`:'';
   const ds=`${mn} ${t1} ${t2} ${g} ${rnd} ${s.city} ${s.name} ${date}`;
   ALL_MATCHES[mn]={m:m,isKO:isKO};
-  return`<div class="${cls}${hasRes?' has-result':''}" data-search="${ds}" data-gr="${g}" data-rnd="${rnd}" data-date="${date}"><div class="mtop"><span class="gnum">${mn}</span><span class="gbadge ${gCls}">${rl}</span><span class="gnum">${date}</span></div><div class="teams">${t1}<span class="vs">VS</span>${t2}</div>${scoreHTML}<div class="minfo"><span>🕐${time}</span><span>🏟️${s.name}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span></div><div class="detail-link"><a href="javascript:void(0)" onclick="event.stopPropagation();openMatchDetail('${mn}')">📋 查看详情 →</a></div></div>`;
+  const matchDate=matchToDate(m);const now=new Date();let status='';if(hasRes)status='done';else if(matchDate&&matchDate<=now)status='live';else status='upcoming';
+  return`<div class="${cls}${hasRes?' has-result':''}${hasRes?' played':''}" data-search="${ds}" data-gr="${g}" data-rnd="${rnd}" data-date="${date}" onclick="openMatchDetail('${mn}')" title="点击查看详情"><div class="mtop"><span class="gnum">${mn}</span><span class="gbadge ${gCls}">${rl}</span><span class="gnum">${date}</span></div><div class="teams">${t1}<span class="vs">VS</span>${t2}</div>${scoreHTML}<div class="minfo"><span>🕐${time}</span><span>🏟️${s.name}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span></div><div class="status-dot ${status}"></div></div>`;
 }
 
 // ═══════════════════════════════ MODAL ═══════════════════════════════
@@ -268,7 +273,7 @@ function openMatchDetail(mn){
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
-function saveResult(mn){const s1=parseInt(document.getElementById('rs1_'+mn)?.value);const s2=parseInt(document.getElementById('rs2_'+mn)?.value);if(isNaN(s1)||isNaN(s2))return;const notes=document.getElementById('rsn_'+mn)?.value||'';RESULTS[mn]={t1s:s1,t2s:s2,notes};SR();closeModal();renderTab();}
+function saveResult(mn){const s1=parseInt(document.getElementById('rs1_'+mn)?.value);const s2=parseInt(document.getElementById('rs2_'+mn)?.value);if(isNaN(s1)||isNaN(s2))return;const notes=document.getElementById('rsn_'+mn)?.value||'';RESULTS[mn]={t1s:s1,t2s:s2,notes};SR();updateProgress();closeModal();renderTab();}
 
 // ═══════════════════════════════ RENDER ═══════════════════════════════
 function renderGroups(){document.getElementById('groupsContent').innerHTML=GM.map(m=>buildCard(m,false)).join('');AF();}
@@ -336,7 +341,7 @@ function ST(tab){
 function renderTab(){if(ctab==='groups')renderGroups();else if(ctab==='knockout')renderKO();else if(ctab==='all')renderAll();else if(ctab==='standings')renderStandings();else if(ctab==='bracket')renderBracket();}
 
 // ═══════════════════════════════ INIT ═══════════════════════════════
-populateFilters();renderGroups();renderKO();renderAll();renderStandings();renderBracket();renderStadiums();renderFavs();renderPlayerGroupSelector('');RP();updateCD();
+populateFilters();renderGroups();renderKO();renderAll();renderStandings();renderBracket();renderStadiums();renderFavs();renderPlayerGroupSelector('');RP();updateCD();updateProgress();
 </script>
 </body>
 </html>
