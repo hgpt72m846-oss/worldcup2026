@@ -57,10 +57,9 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .gb{display:inline-block;padding:2px 6px;border-radius:10px;font-size:.6rem;font-weight:700}
 .g-A{background:#dc2626;color:#fff}.g-B{background:#2563eb;color:#fff}.g-C{background:#16a34a;color:#fff}.g-D{background:#ca8a04;color:#000}.g-E{background:#9333ea;color:#fff}.g-F{background:#0891b2;color:#fff}.g-G{background:#db2777;color:#fff}.g-H{background:#ea580c;color:#fff}.g-I{background:#4f46e5;color:#fff}.g-J{background:#65a30d;color:#000}.g-K{background:#c026d3;color:#fff}.g-L{background:#0d9488;color:#fff}.g-KO{background:#f59e0b;color:#000}
 .mc .tm{font-size:.85rem;font-weight:700;text-align:center;margin:3px 0}.mc .tm .vs{color:var(--m);margin:0 4px;font-weight:400;font-size:.68rem}
-.mc .score{font-size:1.6rem;font-weight:900;text-align:center;margin:6px 0;color:var(--a);display:none;letter-spacing:4px}
-.mc.has-result .score{display:block}
-.mc .live-badge{display:none;position:absolute;top:6px;left:50%;transform:translateX(-50%);background:#ef4444;color:#fff;font-size:.5rem;font-weight:700;padding:1px 6px;border-radius:8px;animation:pulse 1s infinite;letter-spacing:1px}
-.mc.live-match .live-badge{display:block}
+.score-big{font-size:1.8rem;font-weight:900;text-align:center;margin:4px 0 2px;color:var(--a);letter-spacing:6px;line-height:1.2}
+.mc .live-badge{display:inline-block;background:#ef4444;color:#fff;font-size:.45rem;font-weight:700;padding:1px 8px;border-radius:8px;animation:pulse 1s infinite;letter-spacing:2px;position:relative;top:-8px;margin-left:8px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .mc .mi{display:flex;flex-wrap:wrap;gap:2px 5px;font-size:.62rem;color:var(--m);margin-top:4px}
 .mc .mi span{background:#1a2235;padding:2px 5px;border-radius:3px}
 [data-theme="light"] .mc .mi span{background:#f1f5f9}
@@ -211,7 +210,10 @@ function buildCard(m,isKO){
   const now=new Date();let status='';
   const isLive=matchDate&&matchDate<=now&&!hasRes;
   if(hasRes)status='done';else if(isLive)status='live';else status='upcoming';
-  return`<div class="${cls}${hasRes?' has-result':''}${hasRes?' played':''}${isLive?' live-match':''}" data-search="${ds}" data-gr="${g}" data-date="${date}" onclick="openMD('${mn}')"><div class="mt"><span class="gn">${mn}</span><span class="gb ${gCls}">${rl}</span><span class="gn">${date}</span></div><div class="tm">${t1}<span class="vs">VS</span>${t2}</div>${hasRes?`<div class="score">${res.t1s}-${res.t2s}</div>`:''}${isLive?`<div class="score">0-0</div><div class="live-badge">LIVE</div>`:''}<div class="mi"><span>${time}</span><span>${s.name}</span><span>${s.cap}</span></div><div class="status-dot ${status}"></div></div>`;
+  let scoreDisplay='';
+  if(hasRes)scoreDisplay=`<div class="score-big">${res.t1s} - ${res.t2s}</div>${isLive?`<div class="live-badge">LIVE</div>`:''}`;
+  else if(isLive)scoreDisplay=`<div class="score-big">0 - 0</div><div class="live-badge">LIVE</div>`;
+  return`<div class="${cls}${hasRes?' has-result':''}${hasRes?' played':''}${isLive?' live-match':''}" data-search="${ds}" data-gr="${g}" data-date="${date}" onclick="openMD('${mn}')"><div class="mt"><span class="gn">${mn}</span><span class="gb ${gCls}">${rl}</span><span class="gn">${date}</span></div><div class="tm">${t1}<span class="vs">VS</span>${t2}</div>${scoreDisplay}<div class="mi"><span>${time}</span><span>${s.name}</span><span>${s.cap}</span></div><div class="status-dot ${status}"></div></div>`;
 }
 function matchToDate(m){
   const[_,mo,da]=m[1].match(/(\d+)\.(\d+)/)||[];if(!mo)return null;
