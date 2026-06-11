@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 美加墨世界杯 完整赛程手册</title>
+<meta name="description" content="2026 FIFA世界杯 · 104场比赛·48队·积分榜·球员·对阵图">
+<meta property="og:title" content="2026 美加墨世界杯 赛程手册">
+<meta property="og:description" content="104场比赛完整赛程 + 48队球员名单 + 积分榜 + 对阵图">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<style>
+:root{--bg:#0a0e17;--surface:#111827;--border:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#f59e0b;--radius:10px;--hbg:linear-gradient(135deg,#0f172a,#1a2332,#0f172a)}
+[data-theme="light"]{--bg:#f1f5f9;--surface:#fff;--border:#cbd5e1;--text:#1e293b;--muted:#64748b;--accent:#d97706;--hbg:linear-gradient(135deg,#0f172a,#1e3a5f,#0f172a)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;transition:background .3s,color .3s}
+.header{background:var(--hbg);border-bottom:3px solid var(--accent);padding:16px 20px 12px;text-align:center;position:sticky;top:0;z-index:100}
+.header h1{font-size:clamp(1.2rem,4vw,1.8rem);font-weight:800;background:linear-gradient(135deg,#f59e0b,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .sub{color:var(--muted);font-size:.75rem;letter-spacing:3px}
+.theme-btn{position:absolute;top:12px;right:16px;background:none;border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:20px;cursor:pointer;font-size:.7rem;z-index:101}
+.countdown-bar{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 16px;background:#1a2235;border-bottom:1px solid var(--border);font-size:.82rem;flex-wrap:wrap}
+[data-theme="light"] .countdown-bar{background:#e2e8f0}
+.cd-timer{color:var(--accent);font-weight:700}
+.container{max-width:1500px;margin:0 auto;padding:14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;align-items:center}
+.toolbar input,.toolbar select{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:var(--radius);font-size:.8rem;outline:none}
+.toolbar input:focus,.toolbar select:focus{border-color:var(--accent)}
+.toolbar input{flex:1;min-width:150px;max-width:340px}
+.toolbar input::placeholder{color:var(--muted)}
+.toolbar select{cursor:pointer}
+.btn-sm{background:var(--accent);color:#000;border:none;padding:7px 12px;border-radius:var(--radius);font-weight:600;cursor:pointer;font-size:.78rem;white-space:nowrap}
+.btn-sm:hover{opacity:.85}
+.result-count{color:var(--muted);font-size:.78rem;margin-left:auto;white-space:nowrap}
+.tabs{display:flex;gap:3px;margin-bottom:12px;flex-wrap:wrap;background:var(--surface);border-radius:var(--radius);padding:3px}
+.tab-btn{padding:8px 16px;border:none;background:transparent;color:var(--muted);cursor:pointer;border-radius:7px;font-size:.8rem;font-weight:500;transition:all .2s;white-space:nowrap}
+.tab-btn:hover{color:var(--text);background:#1e293b}
+.tab-btn.active{background:var(--accent);color:#000;font-weight:700}
+.fav-bar{display:flex;flex-wrap:wrap;gap:4px;padding:0 0 10px}
+.fav-chip{padding:3px 9px;border-radius:14px;font-size:.7rem;background:var(--surface);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s}
+.fav-chip:hover,.fav-chip.active{border-color:var(--accent);color:var(--accent)}
+.matches-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(370px,1fr));gap:6px}
+.match-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;transition:all .2s;cursor:pointer}
+.match-card:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 4px 15px rgba(245,158,11,.08)}
+.match-card.hl{border-left:3px solid var(--accent)}
+.match-card.opener{border-left:3px solid #ef4444}
+.match-card.final-match{border-left:3px solid #fbbf24;background:linear-gradient(135deg,#1a1a0a,#111827)}
+[data-theme="light"] .match-card.final-match{background:linear-gradient(135deg,#fef3c7,#fff)}
+.match-card .mtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.match-card .gnum{font-size:.62rem;color:var(--muted)}
+.match-card .gbadge{display:inline-block;padding:2px 8px;border-radius:14px;font-size:.68rem;font-weight:700}
+.g-A{background:#dc2626;color:#fff}.g-B{background:#2563eb;color:#fff}.g-C{background:#16a34a;color:#fff}.g-D{background:#ca8a04;color:#000}.g-E{background:#9333ea;color:#fff}.g-F{background:#0891b2;color:#fff}.g-G{background:#db2777;color:#fff}.g-H{background:#ea580c;color:#fff}.g-I{background:#4f46e5;color:#fff}.g-J{background:#65a30d;color:#000}.g-K{background:#c026d3;color:#fff}.g-L{background:#0d9488;color:#fff}.g-KO{background:#f59e0b;color:#000}
+.match-card .teams{font-size:.98rem;font-weight:700;text-align:center;margin:4px 0}
+.match-card .teams .vs{color:var(--muted);margin:0 7px;font-weight:400;font-size:.74rem}
+.match-card .score{font-size:1.3rem;font-weight:800;text-align:center;margin:6px 0;color:var(--accent);display:none}
+.match-card.has-result .score{display:block}
+.match-card .minfo{display:flex;flex-wrap:wrap;gap:3px 6px;font-size:.7rem;color:var(--muted);margin-top:6px}
+.match-card .minfo span{background:#1a2235;padding:2px 6px;border-radius:4px}
+[data-theme="light"] .match-card .minfo span{background:#f1f5f9}
+.match-card .detail-link{text-align:center;margin-top:8px}
+.match-card .detail-link a{color:var(--accent);font-size:.73rem;text-decoration:none;border:1px solid var(--accent);padding:4px 12px;border-radius:14px;transition:all .2s;display:inline-block}
+.match-card .detail-link a:hover{background:var(--accent);color:#000}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:14px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;padding:24px;position:relative}
+.modal-close{position:sticky;top:0;float:right;background:none;border:none;color:var(--muted);font-size:1.8rem;cursor:pointer;line-height:1;z-index:2;margin:-8px -4px 0 0}
+.modal-close:hover{color:var(--accent)}
+.modal .m-title{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.modal .m-sub{font-size:.8rem;color:var(--muted);margin-bottom:16px}
+.modal .m-section{margin-bottom:18px}
+.modal .m-section h4{font-size:.85rem;color:var(--accent);margin-bottom:6px;padding-bottom:3px;border-bottom:1px solid var(--border)}
+.modal .m-config{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;font-size:.76rem;color:var(--text)}
+.modal .m-config span{display:flex;align-items:center;gap:4px}
+.modal .roster-dual{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal .roster-side h5{font-size:.8rem;margin-bottom:6px}
+.modal .roster-pos{margin-bottom:6px}
+.modal .roster-pos .pos-h{font-size:.65rem;color:var(--accent);font-weight:700;margin-bottom:2px;letter-spacing:1px}
+.modal .roster-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.modal .roster-row{display:flex;align-items:center;gap:5px;padding:3px 5px;border-radius:4px;background:#1a2235;font-size:.72rem}
+[data-theme="light"] .modal .roster-row{background:#f1f5f9}
+.modal .roster-row .rnum{width:22px;height:22px;border-radius:50%;background:#0f172a;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.65rem;color:var(--accent);flex-shrink:0}
+.modal .roster-row.cap .rnum{border:2px solid #fbbf24}
+.modal .roster-row .rname{flex:1;font-weight:500}
+.modal .roster-row .rclub{font-size:.62rem;color:var(--muted)}
+.modal .result-edit{display:flex;gap:5px;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.modal .result-edit input{width:42px;padding:5px;text-align:center;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:4px;font-size:.8rem}
+.modal .result-edit input[type="text"]{width:90px;text-align:left}
+
+.standings-group{margin-bottom:16px}.standings-group h3{font-size:.92rem;color:var(--accent);margin-bottom:6px}
+.stg-table{width:100%;border-collapse:collapse;font-size:.76rem}.stg-table th,.stg-table td{padding:5px 7px;text-align:center;border-bottom:1px solid var(--border)}.stg-table th{color:var(--muted);font-weight:500;font-size:.68rem}.stg-table .tname{text-align:left;font-weight:600}.stg-table tr.adv td{background:rgba(34,197,94,.08)}.stg-table tr.adv3 td{background:rgba(245,158,11,.08)}
+.bracket-container{overflow-x:auto;padding:16px 0}.bracket{display:flex;gap:20px;min-width:860px}.bracket-col{display:flex;flex-direction:column;gap:6px;min-width:150px}.bracket-col h4{font-size:.78rem;color:var(--accent);margin-bottom:3px;text-align:center}.bracket-match{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:7px 10px;font-size:.72rem;text-align:center}.bracket-match .bt{font-weight:600}.bracket-match .bd{font-size:.63rem;color:var(--muted)}
+.player-header{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+.player-team-title{font-size:1.05rem;font-weight:700;margin-bottom:3px}.player-team-meta{font-size:.72rem;color:var(--muted);margin-bottom:10px}
+.player-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:5px}
+.player-card{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:9px 10px;display:flex;align-items:center;gap:9px;transition:all .2s}.player-card:hover{border-color:var(--accent)}.player-card .pnum{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.76rem;background:#1a2235;color:var(--accent);flex-shrink:0}.player-card.captain .pnum{border:2px solid #fbbf24}.player-card .pinfo{flex:1;min-width:0}.player-card .pname{font-weight:600;font-size:.8rem}.player-card .pdetail{font-size:.68rem;color:var(--muted);display:flex;gap:5px}.player-card .ppos{font-size:.6rem;padding:2px 5px;border-radius:3px;background:#0f172a;color:var(--accent)}
+.player-selector{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}.ps-chip{padding:5px 10px;border-radius:14px;font-size:.7rem;background:var(--surface);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all .2s}.ps-chip:hover,.ps-chip.active{border-color:var(--accent);color:var(--accent)}
+.stadium-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}.stadium-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px}.stadium-card .scity{font-weight:700;font-size:.95rem}.stadium-card .sname{color:var(--accent);font-size:.82rem;margin:3px 0}.stadium-card .scountry{font-size:.7rem;color:var(--muted)}.stadium-card .sdet{display:grid;grid-template-columns:1fr 1fr;gap:3px 10px;font-size:.7rem;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}.stadium-card .snote{margin-top:4px;font-size:.68rem;color:#fbbf24}
+.footer{text-align:center;padding:16px;color:var(--muted);font-size:.68rem;border-top:1px solid var(--border);margin-top:24px}
+.no-results{text-align:center;padding:40px;color:var(--muted)}
+@media(max-width:600px){.matches-grid{grid-template-columns:1fr}.toolbar{flex-direction:column}.toolbar input{max-width:100%}.modal .roster-dual{grid-template-columns:1fr}.modal .roster-grid{grid-template-columns:1fr}}
+@media print{body{background:#fff;color:#000;font-size:9pt}.header{position:static;border-bottom:2px solid #000;background:none}.header h1{-webkit-text-fill-color:#000;background:none}.toolbar,.tabs,.countdown-bar,.theme-btn,.fav-bar{display:none!important}.match-card{border:1px solid #ccc;page-break-inside:avoid}.container{max-width:100%}}
+</style>
+</head>
+<body>
+
+<button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀️ 浅色</button>
+<div class="header"><h1>2026 美加墨世界杯</h1><div class="sub">FIFA WORLD CUP · 104场 · 48队 · 16城</div></div>
+<div class="countdown-bar"><span id="cdNext">距下一场：</span><span class="cd-timer" id="cdTimer">--</span></div>
+<div class="container">
+  <div class="toolbar">
+    <input type="text" id="searchInput" placeholder="🔍 搜索球队/城市/场馆…" oninput="AF()">
+    <select id="groupFilter" onchange="AF()"><option value="">全部分组</option></select>
+    <select id="dateFilter" onchange="AF()"><option value="">全部日期</option></select>
+    <select id="roundFilter" onchange="AF()"><option value="">全部轮次</option></select>
+    <select id="cityFilter" onchange="AF()"><option value="">全部城市</option></select>
+    <select id="tzSelect" onchange="switchTZ(this.value)"><option value="bj">🇨🇳 北京 time</option><option value="local">📍 当地 time</option></select>
+    <button class="btn-sm" onclick="RF()">重置</button>
+    <span class="result-count" id="resultCount"></span>
+  </div>
+  <div class="fav-bar" id="favBar"></div>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="ST('groups')">📋 小组赛</button>
+    <button class="tab-btn" onclick="ST('knockout')">🏆 淘汰赛</button>
+    <button class="tab-btn" onclick="ST('standings')">📊 积分榜</button>
+    <button class="tab-btn" onclick="ST('bracket')">🌳 对阵图</button>
+    <button class="tab-btn" onclick="ST('players')">👥 球员</button>
+    <button class="tab-btn" onclick="ST('stadiums')">🏟️ 场馆</button>
+    <button class="tab-btn" onclick="ST('all')">📅 全部比赛</button>
+  </div>
+  <div id="tab-groups"><div class="matches-grid" id="groupsContent"></div></div>
+  <div id="tab-knockout" style="display:none"><div class="matches-grid" id="koContent"></div></div>
+  <div id="tab-standings" style="display:none"><div id="stgContainer"></div></div>
+  <div id="tab-bracket" style="display:none"><div class="bracket-container" id="brContainer"></div></div>
+  <div id="tab-players" style="display:none">
+    <div class="player-header"><input type="text" id="playerSearch" placeholder="🔍 搜索球员/俱乐部" oninput="RP()" style="flex:1;min-width:150px;max-width:340px;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:var(--radius);font-size:.8rem;outline:none"><select id="playerTeamFilter" onchange="RP()" style="background:var(--surface);border:1px solid var(--border);color:var(--text);padding:7px;border-radius:var(--radius);font-size:.8rem;min-width:150px"><option value="">全部球队</option></select><span style="color:var(--muted);font-size:.78rem" id="playerCount"></span></div>
+    <div class="player-selector" id="playerGroupSelector"></div>
+    <div id="playerRoster"></div>
+  </div>
+  <div id="tab-stadiums" style="display:none"><div class="stadium-grid" id="stadiumGrid"></div></div>
+  <div id="tab-all" style="display:none"><div class="matches-grid" id="allContent"></div></div>
+  <div class="no-results" id="noResults" style="display:none">🏟️ 没有匹配结果，试试调整筛选条件</div>
+</div>
+<div class="footer"><p>数据：FIFA 官方 · 点击比赛卡片或"查看详情"链接获取完整信息</p></div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay"><div class="modal" id="modalContent"></div></div>
+
+<script>
+// ═══════════════════════════════ DATA ═══════════════════════════════
+const STADIUMS={MEX:{name:'阿兹特克球场',city:'墨西哥城',country:'🇲🇽墨西哥',tz:'CST UTC-6',cap:'83,264',surf:'天然草',roof:'无',open:'1966',note:'1970/1986决赛场地'},MTY:{name:'BBVA体育场',city:'蒙特雷',country:'🇲🇽墨西哥',tz:'CST UTC-6',cap:'53,500',surf:'天然草',roof:'无',open:'2015',note:''},GDL:{name:'阿克伦体育场',city:'瓜达拉哈拉',country:'🇲🇽墨西哥',tz:'CST UTC-6',cap:'48,071',surf:'天然草',roof:'无',open:'2010',note:''},TOR:{name:'BMO球场',city:'多伦多',country:'🇨🇦加拿大',tz:'EDT UTC-4',cap:'45,736',surf:'天然草混合',roof:'部分',open:'2007',note:''},VAN:{name:'BC Place',city:'温哥华',country:'🇨🇦加拿大',tz:'PDT UTC-7',cap:'54,500',surf:'临时天然草',roof:'可开合',open:'1983',note:'临时铺设天然草皮'},LA:{name:'SoFi体育场',city:'洛杉矶/英格尔伍德',country:'🇺🇸美国',tz:'PDT UTC-7',cap:'70,240',surf:'天然草',roof:'固定半透明',open:'2020',note:'造价$55亿'},NYNJ:{name:'大都会人寿体育场',city:'纽约/新泽西东卢瑟福',country:'🇺🇸美国',tz:'EDT UTC-4',cap:'82,500',surf:'天然草',roof:'无',open:'2010',note:'🏆决赛场地'},DAL:{name:'AT&T体育场',city:'达拉斯/阿灵顿',country:'🇺🇸美国',tz:'CDT UTC-5',cap:'80,000',surf:'天然草可伸缩',roof:'可开合',open:'2009',note:'半决赛场地'},ATL:{name:'梅赛德斯-奔驰体育场',city:'亚特兰大',country:'🇺🇸美国',tz:'EDT UTC-4',cap:'71,000',surf:'临时天然草',roof:'可开合花瓣',open:'2017',note:'半决赛场地'},MIA:{name:'硬石体育场',city:'迈阿密花园',country:'🇺🇸美国',tz:'EDT UTC-4',cap:'65,326',surf:'天然草',roof:'部分遮阳',open:'1987',note:'三四名决赛'},BOS:{name:'吉列体育场',city:'波士顿/福克斯堡',country:'🇺🇸美国',tz:'EDT UTC-4',cap:'65,878',surf:'临时天然草',roof:'无',open:'2002',note:'1/4决赛'},PHI:{name:'林肯金融球场',city:'费城',country:'🇺🇸美国',tz:'EDT UTC-4',cap:'67,594',surf:'天然草',roof:'无',open:'2003',note:'7/4美国独立250周年'},SF:{name:'李维斯体育场',city:'旧金山/圣克拉拉',country:'🇺🇸美国',tz:'PDT UTC-7',cap:'68,500',surf:'天然草',roof:'无',open:'2014',note:''},SEA:{name:'流明球场',city:'西雅图',country:'🇺🇸美国',tz:'PDT UTC-7',cap:'68,740',surf:'临时天然草',roof:'部分',open:'2002',note:'临时铺设天然草'},HOU:{name:'NRG体育场',city:'休斯顿',country:'🇺🇸美国',tz:'CDT UTC-5',cap:'72,220',surf:'临时天然草',roof:'可开合',open:'2002',note:''},KC:{name:'箭头体育场',city:'堪萨斯城',country:'🇺🇸美国',tz:'CDT UTC-5',cap:'76,416',surf:'天然草',roof:'无',open:'1972',note:'1/4决赛'}};
+function S(k){return STADIUMS[k]||{name:'待定',city:'待定',country:'',tz:'',cap:'---',surf:'---',roof:'---',open:'---',note:''}}
+const RANKINGS={阿根廷:1,法国:2,西班牙:3,英格兰:4,巴西:5,葡萄牙:6,荷兰:7,比利时:8,德国:9,乌拉圭:10,克罗地亚:11,哥伦比亚:12,摩洛哥:13,日本:14,美国:15,墨西哥:16,塞内加尔:17,伊朗:18,韩国:19,澳大利亚:20,瑞典:21,土耳其:22,厄瓜多尔:23,埃及:24,科特迪瓦:25,奥地利:26,苏格兰:27,挪威:28,瑞士:29,加拿大:30,巴拉圭:31,沙特:32,南非:33,卡塔尔:34,捷克:35,新西兰:36,伊拉克:37,加纳:38,阿尔及利亚:39,巴拿马:40,约旦:41,波黑:42,突尼斯:43,佛得角:44,海地:45,库拉索:46,民主刚果:47,乌兹别克:48};
+
+// Group matches: [mn,date,bj,local,t1,t2,g,round,skey,hl]
+const GM=[['M1','6.12(四)','03:00','6/11 13:00','🇲🇽墨西哥','🇿🇦南非','A','第1轮','MEX',1],['M2','6.12(四)','10:00','6/11 20:00','🇰🇷韩国','🇨🇿捷克','A','第1轮','MEX',0],['M3','6.13(五)','03:00','6/12 15:00','🇨🇦加拿大','🇧🇦波黑','B','第1轮','TOR',1],['M4','6.13(五)','09:00','6/12 18:00','🇶🇦卡塔尔','🇨🇭瑞士','B','第1轮','VAN',0],['M5','6.14(六)','03:00','6/13 15:00','🇧🇷巴西','🇲🇦摩洛哥','C','第1轮','NYNJ',1],['M6','6.14(六)','07:00','6/13 19:00','🇭🇹海地','🏴󠁧󠁢󠁳󠁣󠁴󠁿苏格兰','C','第1轮','PHI',0],['M7','6.14(六)','10:00','6/13 19:00','🇺🇸美国','🇵🇾巴拉圭','D','第1轮','LA',1],['M8','6.14(六)','12:00','6/13 21:00','🇦🇺澳大利亚','🇹🇷土耳其','D','第1轮','SEA',0],['M9','6.15(日)','01:00','6/14 12:00','🇩🇪德国','🇨🇼库拉索','E','第1轮','HOU',0],['M10','6.15(日)','06:00','6/14 17:00','🇨🇮科特迪瓦','🇪🇨厄瓜多尔','E','第1轮','DAL',0],['M11','6.15(日)','08:00','6/14 17:00','🇳🇱荷兰','🇯🇵日本','F','第1轮','SF',1],['M12','6.15(日)','10:00','6/14 21:00','🇸🇪瑞典','🇹🇳突尼斯','F','第1轮','KC',0],['M13','6.16(一)','00:00','6/15 12:00','🇪🇸西班牙','🇨🇻佛得角','G','第1轮','MIA',0],['M14','6.16(一)','03:00','6/15 15:00','🇧🇪比利时','🇪🇬埃及','G','第1轮','ATL',0],['M15','6.16(一)','07:00','6/15 19:00','🇸🇦沙特','🇺🇾乌拉圭','H','第1轮','BOS',0],['M16','6.16(一)','10:00','6/15 21:00','🇮🇷伊朗','🇳🇿新西兰','H','第1轮','HOU',0],['M17','6.17(二)','03:00','6/16 15:00','🇫🇷法国','🇸🇳塞内加尔','I','第1轮','NYNJ',1],['M18','6.17(二)','07:00','6/16 19:00','🇮🇶伊拉克','🇳🇴挪威','I','第1轮','PHI',0],['M19','6.17(二)','10:00','6/16 21:00','🇦🇷阿根廷','🇩🇿阿尔及利亚','J','第1轮','DAL',1],['M20','6.17(二)','12:00','6/16 21:00','🇦🇹奥地利','🇯🇴约旦','J','第1轮','SF',0],['M21','6.18(三)','01:00','6/17 12:00','🇵🇹葡萄牙','🇨🇩民主刚果','K','第1轮','MIA',0],['M22','6.18(三)','05:00','6/17 16:00','🇺🇿乌兹别克','🇨🇴哥伦比亚','K','第1轮','SEA',0],['M23','6.18(三)','08:00','6/17 20:00','🏴󠁧󠁢󠁥󠁮󠁧󠁿英格兰','🇭🇷克罗地亚','L','第1轮','ATL',1],['M24','6.18(三)','10:00','6/17 21:00','🇬🇭加纳','🇵🇦巴拿马','L','第1轮','TOR',0],['M25','6.19(四)','00:00','6/18 10:00','🇨🇿捷克','🇿🇦南非','A','第2轮','MTY',0],['M26','6.19(四)','03:00','6/18 12:00','🇨🇭瑞士','🇧🇦波黑','B','第2轮','VAN',0],['M27','6.19(四)','07:00','6/18 19:00','🇨🇦加拿大','🇶🇦卡塔尔','B','第2轮','TOR',0],['M28','6.19(四)','10:00','6/18 20:00','🇲🇽墨西哥','🇰🇷韩国','A','第2轮','MEX',1],['M29','6.20(五)','04:00','6/19 13:00','🇺🇸美国','🇦🇺澳大利亚','D','第2轮','SEA',1],['M30','6.20(五)','07:00','6/19 19:00','🏴󠁧󠁢󠁳󠁣󠁴󠁿苏格兰','🇲🇦摩洛哥','C','第2轮','BOS',0],['M31','6.20(五)','09:00','6/19 21:00','🇧🇷巴西','🇭🇹海地','C','第2轮','NYNJ',0],['M32','6.20(五)','11:00','6/19 22:00','🇹🇷土耳其','🇵🇾巴拉圭','D','第2轮','HOU',0],['M33','6.21(六)','02:00','6/20 13:00','🇳🇱荷兰','🇸🇪瑞典','F','第2轮','DAL',1],['M34','6.21(六)','05:00','6/20 17:00','🇩🇪德国','🇨🇮科特迪瓦','E','第2轮','ATL',0],['M35','6.21(六)','09:00','6/20 20:00','🇪🇨厄瓜多尔','🇨🇼库拉索','E','第2轮','KC',0],['M36','6.21(六)','12:00','6/20 21:00','🇹🇳突尼斯','🇯🇵日本','F','第2轮','SF',0],['M37','6.22(日)','00:00','6/21 12:00','🇪🇸西班牙','🇸🇦沙特','H','第2轮','MIA',0],['M38','6.22(日)','04:00','6/21 15:00','🇧🇪比利时','🇮🇷伊朗','H','第2轮','HOU',0],['M39','6.22(日)','07:00','6/21 19:00','🇺🇾乌拉圭','🇨🇻佛得角','G','第2轮','PHI',0],['M40','6.22(日)','10:00','6/21 22:00','🇳🇿新西兰','🇪🇬埃及','G','第2轮','BOS',0],['M41','6.23(一)','02:00','6/22 14:00','🇦🇷阿根廷','🇦🇹奥地利','J','第2轮','NYNJ',1],['M42','6.23(一)','06:00','6/22 15:00','🇫🇷法国','🇮🇶伊拉克','I','第2轮','LA',0],['M43','6.23(一)','09:00','6/22 18:00','🇳🇴挪威','🇸🇳塞内加尔','I','第2轮','SEA',0],['M44','6.23(一)','11:00','6/22 22:00','🇯🇴约旦','🇩🇿阿尔及利亚','J','第2轮','KC',0],['M45','6.24(二)','02:00','6/23 14:00','🇵🇹葡萄牙','🇺🇿乌兹别克','K','第2轮','ATL',0],['M46','6.24(二)','05:00','6/23 17:00','🏴󠁧󠁢󠁥󠁮󠁧󠁿英格兰','🇬🇭加纳','L','第2轮','DAL',1],['M47','6.24(二)','08:00','6/23 20:00','🇵🇦巴拿马','🇭🇷克罗地亚','L','第2轮','TOR',0],['M48','6.24(二)','10:00','6/24 21:00','🇨🇴哥伦比亚','🇨🇩民主刚果','K','第2轮','MIA',0],['M49','6.25(三)','03:00','6/24 12:00','🇨🇭瑞士','🇨🇦加拿大','B','第3轮','VAN',0],['M50','6.25(三)','03:00','6/24 15:00','🇧🇦波黑','🇶🇦卡塔尔','B','第3轮','TOR',0],['M51','6.25(三)','07:00','6/24 19:00','🏴󠁧󠁢󠁳󠁣󠁴󠁿苏格兰','🇧🇷巴西','C','第3轮','NYNJ',0],['M52','6.25(三)','07:00','6/24 19:00','🇲🇦摩洛哥','🇭🇹海地','C','第3轮','PHI',0],['M53','6.25(三)','10:00','6/24 20:00','🇨🇿捷克','🇲🇽墨西哥','A','第3轮','MEX',0],['M54','6.25(三)','10:00','6/24 20:00','🇿🇦南非','🇰🇷韩国','A','第3轮','MTY',0],['M55','6.26(四)','04:00','6/25 15:00','🇪🇨厄瓜多尔','🇩🇪德国','E','第3轮','DAL',0],['M56','6.26(四)','04:00','6/25 15:00','🇨🇼库拉索','🇨🇮科特迪瓦','E','第3轮','HOU',0],['M57','6.26(四)','08:00','6/25 17:00','🇯🇵日本','🇸🇪瑞典','F','第3轮','SF',0],['M58','6.26(四)','08:00','6/25 21:00','🇹🇳突尼斯','🇳🇱荷兰','F','第3轮','KC',0],['M59','6.26(四)','11:00','6/25 20:00','🇹🇷土耳其','🇺🇸美国','D','第3轮','LA',1],['M60','6.26(四)','11:00','6/25 20:00','🇵🇾巴拉圭','🇦🇺澳大利亚','D','第3轮','SEA',0],['M61','6.27(五)','04:00','6/26 16:00','🇳🇴挪威','🇫🇷法国','I','第3轮','NYNJ',1],['M62','6.27(五)','04:00','6/26 16:00','🇸🇳塞内加尔','🇮🇶伊拉克','I','第3轮','PHI',0],['M63','6.27(五)','09:00','6/26 21:00','🇨🇻佛得角','🇸🇦沙特','H','第3轮','BOS',0],['M64','6.27(五)','09:00','6/26 21:00','🇺🇾乌拉圭','🇪🇸西班牙','H','第3轮','MIA',0],['M65','6.27(五)','12:00','6/26 23:00','🇪🇬埃及','🇮🇷伊朗','G','第3轮','ATL',0],['M66','6.27(五)','12:00','6/26 22:00','🇳🇿新西兰','🇧🇪比利时','G','第3轮','HOU',0],['M67','6.28(六)','05:00','6/27 17:00','🇵🇦巴拿马','🏴󠁧󠁢󠁥󠁮󠁧󠁿英格兰','L','第3轮','DAL',0],['M68','6.28(六)','05:00','6/27 17:00','🇭🇷克罗地亚','🇬🇭加纳','L','第3轮','TOR',0],['M69','6.28(六)','07:30','6/27 16:30','🇨🇴哥伦比亚','🇵🇹葡萄牙','K','第3轮','SF',0],['M70','6.28(六)','07:30','6/27 18:30','🇨🇩民主刚果','🇺🇿乌兹别克','K','第3轮','SEA',0],['M71','6.28(六)','10:00','6/27 21:00','🇩🇿阿尔及利亚','🇦🇹奥地利','J','第3轮','KC',0],['M72','6.28(六)','10:00','6/27 22:00','🇯🇴约旦','🇦🇷阿根廷','J','第3轮','MIA',0]];
+const KO=[['M73','6.29(日)','03:00','6/28 12:00','A2 vs B2','1/16决赛','LA',''],['M74','6.29(日)','06:00','6/28 18:00','E1 vs 3rd(A/B/C/D/F)','1/16决赛','BOS',''],['M75','6.29(日)','09:00','6/28 19:00','F1 vs C2','1/16决赛','MTY',''],['M76','6.29(日)','12:00','6/28 21:00','C1 vs F2','1/16决赛','HOU',''],['M77','6.30(一)','03:00','6/29 15:00','I1 vs 3rd(C/D/F/G/H)','1/16决赛','NYNJ',''],['M78','6.30(一)','06:00','6/29 17:00','E2 vs I2','1/16决赛','DAL',''],['M79','6.30(一)','09:00','6/29 19:00','A1 vs 3rd(C/E/F/H/I)','1/16决赛','MEX',''],['M80','6.30(一)','12:00','6/29 21:00','L1 vs 3rd(E/H/I/J/K)','1/16决赛','ATL',''],['M81','7.1(二)','03:00','6/30 12:00','D1 vs 3rd(B/E/F/I/J)','1/16决赛','SF',''],['M82','7.1(二)','06:00','6/30 15:00','G1 vs 3rd(A/E/H/I/J)','1/16决赛','SEA',''],['M83','7.1(二)','09:00','6/30 21:00','K2 vs L2','1/16决赛','TOR',''],['M84','7.1(二)','12:00','6/30 20:00','H1 vs J2','1/16决赛','LA',''],['M85','7.2(三)','03:00','7/1 12:00','B1 vs 3rd(E/F/G/I/J)','1/16决赛','VAN',''],['M86','7.2(三)','06:00','7/1 18:00','J1 vs H2','1/16决赛','MIA',''],['M87','7.2(三)','09:00','7/1 20:00','K1 vs 3rd(D/E/I/J/L)','1/16决赛','KC',''],['M88','7.2(三)','12:00','7/1 21:00','D2 vs G2','1/16决赛','DAL',''],['M89','7.5(六)','00:00','7/4 12:00','W74 vs W77','1/8决赛','PHI','🇺🇸独立250周年'],['M90','7.5(六)','04:00','7/4 15:00','W73 vs W75','1/8决赛','HOU',''],['M91','7.6(日)','00:00','7/5 12:00','W76 vs W78','1/8决赛','NYNJ',''],['M92','7.6(日)','04:00','7/5 14:00','W79 vs W80','1/8决赛','MEX',''],['M93','7.7(一)','00:00','7/6 12:00','W83 vs W84','1/8决赛','DAL',''],['M94','7.7(一)','04:00','7/6 13:00','W81 vs W82','1/8决赛','SEA',''],['M95','7.8(二)','00:00','7/7 12:00','W86 vs W88','1/8决赛','ATL',''],['M96','7.8(二)','04:00','7/7 13:00','W85 vs W87','1/8决赛','VAN',''],['M97','7.10(四)','03:00','7/9 15:00','W89 vs W90','1/4决赛','BOS',''],['M98','7.11(五)','00:00','7/10 12:00','W91 vs W92','1/4决赛','LA',''],['M99','7.12(六)','00:00','7/11 12:00','W93 vs W94','1/4决赛','MIA',''],['M100','7.12(六)','04:00','7/11 15:00','W95 vs W96','1/4决赛','KC',''],['M101','7.15(二)','04:00','7/14 15:00','W97 vs W98','半决赛','DAL',''],['M102','7.16(三)','04:00','7/15 15:00','W99 vs W100','半决赛','ATL',''],['M103','7.19(六)','02:00','7/18 14:00','L-M101 vs L-M102','三四名决赛','MIA',''],['M104','7.20(日)','03:00','7/19 15:00','W-M101 vs W-M102','决赛','NYNJ','🏆冠军之战']];
+
+const TEAMS_D={};'墨西哥,A,Javier Aguirre,奥乔亚;南非,A,Hugo Broos,Ronwen Williams;韩国,A,洪明甫,孙兴慜;捷克,A,Miroslav Koubek,Tomáš Souček;加拿大,B,Jesse Marsch,Alphonso Davies;波黑,B,Sergej Barbarez,Edin Džeko;卡塔尔,B,Julen Lopetegui,Akram Afif;瑞士,B,Murat Yakin,Granit Xhaka;巴西,C,Carlo Ancelotti,Neymar;摩洛哥,C,Mohamed Ouahbi,Achraf Hakimi;海地,C,Sébastien Migne,Duckens Nazon;苏格兰,C,Steve Clarke,Andy Robertson;美国,D,Mauricio Pochettino,Christian Pulisic;巴拉圭,D,Gustavo Alfaro,Miguel Almirón;澳大利亚,D,Tony Popovic,Maty Ryan;土耳其,D,Vincenzo Montella,Hakan Çalhanoğlu;德国,E,Julian Nagelsmann,Manuel Neuer;库拉索,E,Dick Advocaat,Juninho Bacuna;科特迪瓦,E,Emerse Faé,Franck Kessié;厄瓜多尔,E,Sebastián Beccacece,Enner Valencia;荷兰,F,Ronald Koeman,Virgil van Dijk;日本,F,森保一,远藤航;瑞典,F,Graham Potter,Victor Lindelöf;突尼斯,F,Sabri Lamouchi,Ellyes Skhiri;西班牙,G,Luis de la Fuente,Rodri;佛得角,G,Bubista,Ryan Mendes;沙特,H,Georgios Donis,Salem Al-Dawsari;乌拉圭,H,Marcelo Bielsa,Federico Valverde;比利时,G,Rudi Garcia,Kevin De Bruyne;埃及,G,Hossam Hassan,Mohamed Salah;伊朗,H,Amir Ghalenoei,Mehdi Taremi;新西兰,H,Darren Bazeley,Chris Wood;法国,I,Didier Deschamps,Kylian Mbappé;塞内加尔,I,Pape Thiaw,Kalidou Koulibaly;伊拉克,I,Graham Arnold,Aymen Hussein;挪威,I,Ståle Solbakken,Martin Ødegaard;阿根廷,J,Lionel Scaloni,莱昂内尔·梅西;阿尔及利亚,J,Vladimir Petković,Riyad Mahrez;奥地利,J,Ralf Rangnick,David Alaba;约旦,J,Jamal Sellami,Musa Al-Tamari;葡萄牙,K,Roberto Martínez,Cristiano Ronaldo;民主刚果,K,Sébastien Desabre,Chancel Mbemba;乌兹别克,K,Fabio Cannavaro,Eldor Shomurodov;哥伦比亚,K,Néstor Lorenzo,Luis Díaz;英格兰,L,Thomas Tuchel,Harry Kane;克罗地亚,L,Zlatko Dalić,Luka Modrić;加纳,L,Carlos Queiroz,Thomas Partey;巴拿马,L,Thomas Christiansen,Aníbal Godoy'.split(';').forEach(s=>{const p=s.split(',');TEAMS_D[p[0]]={g:p[1],mgr:p[2],cap:p[3]}});
+function tk(r){return r.replace(/^[^\s]+\s/,'');}
+
+// Players (48 teams)
+const P={};
+P['阿根廷']=[['莱昂内尔·梅西','FW','迈阿密国际','10',1],['埃米利亚诺·马丁内斯','GK','阿斯顿维拉','23',0],['赫罗尼莫·鲁利','GK','马赛','12',0],['克里斯蒂安·罗梅罗','DF','热刺','13',0],['利桑德罗·马丁内斯','DF','曼联','25',0],['尼古拉斯·奥塔门迪','DF','本菲卡','19',0],['纳韦尔·莫利纳','DF','马竞','26',0],['贡萨洛·蒙铁尔','DF','塞维利亚','4',0],['尼古拉斯·塔利亚菲科','DF','里昂','3',0],['恩佐·费尔南德斯','MF','切尔西','24',0],['亚历克西斯·麦卡利斯特','MF','利物浦','20',0],['罗德里戈·德保罗','MF','迈阿密国际','7',0],['莱安德罗·帕雷德斯','MF','罗马','5',0],['乔瓦尼·洛塞尔索','MF','热刺','16',0],['埃克塞基耶尔·帕拉西奥斯','MF','勒沃库森','14',0],['劳塔罗·马丁内斯','FW','国米','22',0],['胡利安·阿尔瓦雷斯','FW','马竞','9',0],['安赫尔·迪马利亚','FW','本菲卡','11',0],['亚历杭德罗·加纳乔','FW','曼联','17',0],['尼古拉斯·冈萨雷斯','FW','尤文图斯','15',0]];
+P['巴西']=[['内马尔','FW','桑托斯','10',1],['阿利松','GK','利物浦','1',0],['埃德森','GK','费内巴切','23',0],['加布里埃尔','DF','阿森纳','14',0],['马尔基尼奥斯','DF','巴黎','3',0],['米利唐','DF','皇马','4',0],['达尼洛','DF','尤文','2',0],['吉列尔梅·阿拉纳','DF','米内罗竞技','6',0],['布鲁诺·吉马良斯','MF','纽卡斯尔','5',0],['卡塞米罗','MF','曼联','17',0],['若昂·戈麦斯','MF','狼队','15',0],['卢卡斯·帕奎塔','MF','西汉姆联','8',0],['维尼修斯','FW','皇马','7',0],['拉菲尼亚','FW','巴萨','11',0],['罗德里戈','FW','皇马','21',0],['马丁内利','FW','阿森纳','19',0],['马特乌斯·库尼亚','FW','曼联','9',0],['恩德里克','FW','皇马','20',0],['萨维尼奥','FW','曼城','22',0]];
+P['法国']=[['姆巴佩','FW','皇马','10',1],['迈尼昂','GK','AC米兰','16',0],['布里斯·桑巴','GK','朗斯','1',0],['萨利巴','DF','阿森纳','17',0],['科纳特','DF','利物浦','24',0],['朱尔·孔德','DF','巴萨','5',0],['特奥','DF','AC米兰','22',0],['帕瓦尔','DF','国米','2',0],['于帕梅卡诺','DF','拜仁','4',0],['楚阿梅尼','MF','皇马','8',0],['卡马文加','MF','皇马','6',0],['坎特','MF','费内巴切','13',0],['扎伊尔-埃梅里','MF','巴黎','18',0],['拉比奥','MF','马赛','14',0],['登贝莱','FW','巴黎','11',0],['奥利塞','FW','拜仁','20',0],['马库斯·图拉姆','FW','国米','9',0],['科洛·穆阿尼','FW','巴黎','12',0],['巴尔科拉','FW','巴黎','7',0],['金斯利·科曼','FW','拜仁','15',0]];
+P['英格兰']=[['哈里·凯恩','FW','拜仁','9',1],['皮克福德','GK','埃弗顿','1',0],['拉姆斯代尔','GK','南安普顿','13',0],['斯通斯','DF','曼城','5',0],['格希','DF','曼城','6',0],['沃克','DF','AC米兰','2',0],['卢克·肖','DF','曼联','3',0],['阿诺德','DF','利物浦','8',0],['科尔威尔','DF','切尔西','15',0],['贝林厄姆','MF','皇马','10',0],['赖斯','MF','阿森纳','4',0],['科比·梅努','MF','曼联','19',0],['加拉格尔','MF','马竞','16',0],['帕尔默','MF','切尔西','20',0],['萨卡','FW','阿森纳','7',0],['拉什福德','FW','巴萨','11',0],['福登','FW','曼城','17',0],['沃特金斯','FW','维拉','18',0],['鲍恩','FW','西汉姆联','21',0]];
+P['德国']=[['诺伊尔','GK','拜仁','1',1],['特尔施特根','GK','巴萨','22',0],['努贝尔','GK','斯图加特','12',0],['吕迪格','DF','皇马','2',0],['约纳坦·塔','DF','勒沃库森','4',0],['施洛特贝克','DF','多特蒙德','15',0],['基米希','DF','拜仁','6',0],['劳姆','DF','莱比锡','3',0],['亨里克斯','DF','莱比锡','20',0],['穆西亚拉','MF','拜仁','10',0],['维尔茨','MF','利物浦','17',0],['格雷茨卡','MF','拜仁','8',0],['格罗斯','MF','多特蒙德','5',0],['施蒂勒','MF','斯图加特','23',0],['哈弗茨','FW','阿森纳','7',0],['萨内','FW','加拉塔萨雷','19',0],['格纳布里','FW','拜仁','9',0],['翁达夫','FW','斯图加特','11',0],['菲尔克鲁格','FW','西汉姆联','13',0]];
+P['西班牙']=[['罗德里','MF','曼城','16',1],['乌奈·西蒙','GK','毕尔巴鄂竞技','23',0],['拉亚','GK','阿森纳','1',0],['拉波尔特','DF','利雅得胜利','4',0],['保·库巴西','DF','巴萨','2',0],['勒诺尔芒','DF','马竞','5',0],['巴尔德','DF','巴萨','3',0],['佩德罗·波罗','DF','热刺','12',0],['库库雷利亚','DF','切尔西','17',0],['佩德里','MF','巴萨','8',0],['加维','MF','巴萨','6',0],['法比安·鲁伊斯','MF','巴黎','18',0],['苏比门迪','MF','皇家社会','14',0],['达尼·奥尔莫','MF','莱比锡','10',0],['亚马尔','FW','巴萨','19',0],['尼科·威廉姆斯','FW','毕尔巴鄂竞技','11',0],['莫拉塔','FW','马竞','7',0],['奥亚萨瓦尔','FW','皇家社会','21',0],['费兰·托雷斯','FW','巴萨','9',0],['耶雷米·皮诺','FW','比利亚雷亚尔','20',0]];
+P['葡萄牙']=[['C罗','FW','利雅得胜利','7',1],['迪奥戈·科斯塔','GK','波尔图','1',0],['鲁伊·帕特里西奥','GK','罗马','12',0],['鲁本·迪亚斯','DF','曼城','3',0],['安东尼奥·席尔瓦','DF','本菲卡','14',0],['坎塞洛','DF','巴萨','20',0],['努诺·门德斯','DF','巴黎','19',0],['达洛特','DF','曼联','2',0],['伊纳西奥','DF','葡萄牙体育','4',0],['B费','MF','曼联','8',0],['B席','MF','曼城','10',0],['若昂·内维斯','MF','巴黎','15',0],['维蒂尼亚','MF','巴黎','23',0],['鲁本·内维斯','MF','利雅得新月','18',0],['莱奥','FW','AC米兰','17',0],['若塔','FW','利物浦','21',0],['贡萨洛·拉莫斯','FW','巴黎','9',0],['孔塞桑','FW','尤文','11',0],['佩德罗·内托','FW','切尔西','13',0]];
+P['荷兰']=[['范戴克','DF','利物浦','4',1],['费尔布鲁亨','GK','布莱顿','1',0],['弗莱肯','GK','布伦特福德','13',0],['德利赫特','DF','曼联','3',0],['阿克','DF','曼城','5',0],['邓弗里斯','DF','国米','22',0],['廷贝尔','DF','阿森纳','2',0],['约雷尔·哈托','DF','阿贾克斯','6',0],['弗伦基·德容','MF','巴萨','21',0],['赫拉芬贝赫','MF','利物浦','18',0],['赖因德斯','MF','AC米兰','14',0],['科普迈纳斯','MF','尤文','20',0],['哈维·西蒙斯','MF','莱比锡','10',0],['加克波','FW','利物浦','8',0],['德佩','FW','马竞','9',0],['马伦','FW','多特蒙德','7',0],['布罗比','FW','阿贾克斯','19',0]];
+P['比利时']=[['德布劳内','MF','那不勒斯','7',1],['库尔图瓦','GK','皇马','1',0],['塞尔斯','GK','诺丁汉森林','13',0],['法斯','DF','莱斯特城','4',0],['德巴斯特','DF','葡萄牙体育','2',0],['泰亚特','DF','法兰克福','3',0],['卡斯塔涅','DF','富勒姆','21',0],['多库','MF','曼城','11',0],['特罗萨德','MF','阿森纳','17',0],['奥纳纳','MF','维拉','6',0],['曼加拉','MF','埃弗顿','18',0],['德凯特拉雷','MF','亚特兰大','15',0],['蒂勒曼斯','MF','维拉','8',0],['卢卡库','FW','那不勒斯','9',0],['奥彭达','FW','莱比锡','20',0],['卢克巴基奥','FW','塞维利亚','14',0],['巴卡约科','FW','PSV','19',0]];
+P['美国']=[['普利西奇','FW','AC米兰','10',1],['特纳','GK','诺丁汉森林','1',0],['霍瓦特','GK','加的夫城','18',0],['安东尼·罗宾逊','DF','富勒姆','5',0],['德斯特','DF','PSV','2',0],['克里斯·理查兹','DF','水晶宫','4',0],['里姆','DF','夏洛特FC','3',0],['斯卡利','DF','门兴','19',0],['麦肯尼','MF','尤文','8',0],['雷纳','MF','多特蒙德','7',0],['尤努斯·穆萨','MF','AC米兰','6',0],['泰勒·亚当斯','MF','伯恩茅斯','14',0],['马利克·蒂尔曼','MF','PSV','17',0],['卡多索','MF','贝蒂斯','15',0],['巴洛贡','FW','摩纳哥','9',0],['蒂莫西·维阿','FW','尤文','21',0],['佩皮','FW','PSV','20',0],['阿伦森','FW','利兹联','11',0]];
+P['墨西哥']=[['奥乔亚','GK','AEL利马索尔','13',0],['马拉贡','GK','美洲','1',0],['塞萨尔·蒙特斯','DF','莫斯科火车头','3',0],['约翰·巴斯克斯','DF','热那亚','5',0],['豪尔赫·桑切斯','DF','波尔图','2',0],['加利亚多','DF','蒙特雷','23',0],['埃德松·阿尔瓦雷斯','MF','费内巴切','6',0],['路易斯·查韦斯','MF','莫斯科迪纳摩','18',0],['皮内达','MF','雅典AEK','17',0],['卡洛斯·罗德里格斯','MF','蓝十字','8',0],['圣地亚哥·希门尼斯','FW','AC米兰','9',0],['劳尔·希门尼斯','FW','富勒姆','10',1],['洛萨诺','FW','圣迭戈FC','11',0],['基尼奥内斯','FW','美洲','22',0]];
+P['加拿大']=[['圣克莱尔','GK','明尼苏达联','1',0],['克雷波','GK','波特兰','18',0],['阿方索·戴维斯','DF','拜仁','19',1],['约翰斯顿','DF','凯尔特人','2',0],['邦比托','DF','尼斯','4',0],['科尼利厄斯','DF','马赛','5',0],['欧斯塔基奥','MF','波尔图','7',0],['科内','MF','马赛','8',0],['奥索里奥','MF','多伦多FC','21',0],['舒瓦尼耶','MF','蒙特利尔','6',0],['乔纳森·戴维','FW','尤文','9',0],['拉林','FW','马略卡','10',0],['布坎南','FW','国米','11',0],['米勒','FW','巴塞尔','23',0]];
+P['日本']=[['铃木彩艳','GK','帕尔马','1',0],['大迫敬介','GK','广岛','12',0],['富安健洋','DF','阿贾克斯','22',0],['伊藤洋辉','DF','拜仁','3',0],['板仓滉','DF','门兴','4',0],['菅原由势','DF','南安普顿','2',0],['远藤航','MF','利物浦','5',1],['镰田大地','MF','水晶宫','15',0],['久保建英','MF','皇家社会','11',0],['堂安律','MF','弗赖堡','10',0],['守田英正','MF','葡萄牙体育','14',0],['旗手怜央','MF','凯尔特人','17',0],['上田绮世','FW','费耶诺德','9',0],['南野拓实','FW','摩纳哥','8',0],['中村敬斗','FW','兰斯','13',0]];
+P['韩国']=[['金承奎','GK','利雅得青年','1',0],['赵贤祐','GK','蔚山','12',0],['金玟哉','DF','拜仁','4',0],['李记帝','DF','水原三星','3',0],['薛英佑','DF','贝尔格莱德红星','22',0],['金英权','DF','蔚山','19',0],['李刚仁','MF','巴黎','18',0],['黄仁范','MF','费耶诺德','6',0],['李在成','MF','美因茨','10',0],['孙俊浩','MF','水原FC','8',0],['孙兴慜','FW','LAFC','7',1],['黄喜灿','FW','狼队','11',0],['吴贤揆','FW','凯尔特人','9',0],['曹圭成','FW','中日德兰','14',0]];
+P['克罗地亚']=[['利瓦科维奇','GK','费内巴切','1',0],['拉布罗维奇','GK','奥格斯堡','12',0],['格瓦迪奥尔','DF','曼城','4',0],['索萨','DF','阿贾克斯','3',0],['斯塔尼希奇','DF','拜仁','2',0],['舒塔洛','DF','阿贾克斯','6',0],['莫德里奇','MF','AC米兰','10',1],['科瓦契奇','MF','曼城','8',0],['布罗佐维奇','MF','利雅得胜利','11',0],['马耶尔','MF','沃尔夫斯堡','7',0],['帕沙利奇','MF','亚特兰大','15',0],['弗拉希奇','MF','都灵','13',0],['苏契奇','MF','皇家社会','25',0],['克拉马里奇','FW','霍芬海姆','9',0],['佩特科维奇','FW','萨格勒布迪纳摩','17',0],['佩里西奇','FW','哈伊杜克','5',0]];
+P['乌拉圭']=[['罗切特','GK','国米','1',0],['伊斯雷尔','GK','葡萄牙体育','12',0],['阿劳霍','DF','巴萨','4',0],['希门尼斯','DF','马竞','2',0],['卡塞雷斯','DF','美洲','3',0],['奥利韦拉','DF','那不勒斯','22',0],['南德斯','DF','利雅得胜利','8',0],['巴尔韦德','MF','皇马','15',1],['乌加特','MF','巴黎','5',0],['本坦库尔','MF','热刺','6',0],['德阿拉斯卡埃塔','MF','弗拉门戈','10',0],['德拉克鲁斯','MF','弗拉门戈','7',0],['努涅斯','FW','利雅得新月','11',0],['比尼亚斯','FW','皇马','9',0],['佩利斯特里','FW','曼联','16',0],['布里安·罗德里格斯','FW','美洲','18',0]];
+P['摩洛哥']=[['布努','GK','利雅得新月','1',0],['穆尼尔','GK','瓦赫达','12',0],['阿什拉夫','DF','巴黎','2',1],['马兹拉维','DF','曼联','3',0],['阿盖尔','DF','西汉姆联','5',0],['赛斯','DF','利雅得青年','6',0],['阿姆拉巴特','MF','费内巴切','4',0],['欧纳希','MF','马赛','8',0],['哈努斯','MF','莱斯特城','10',0],['理查森','MF','佛罗伦萨','15',0],['布拉欣·迪亚斯','FW','皇马','7',0],['恩内斯里','FW','费内巴切','9',0],['本·塞吉尔','FW','摩纳哥','11',0],['阿德利','FW','勒沃库森','17',0],['阿布赫拉尔','FW','图卢兹','14',0]];
+P['瑞典']=[['约翰松','GK','斯托克城','1',0],['林德洛夫','DF','维拉','3',1],['希恩','DF','亚特兰大','4',0],['霍尔姆','DF','博洛尼亚','2',0],['斯万贝里','MF','沃尔夫斯堡','8',0],['卡朱斯特','MF','那不勒斯','18',0],['阿亚里','MF','布莱顿','20',0],['拉松','MF','法兰克福','14',0],['伊萨克','FW','利物浦','9',0],['约克雷斯','FW','阿森纳','11',0],['库卢塞夫斯基','FW','热刺','10',0],['埃兰加','FW','诺丁汉森林','7',0]];
+P['挪威']=[['尼兰','GK','塞维利亚','1',0],['阿耶尔','DF','布伦特福德','4',0],['厄德高','MF','阿森纳','10',1],['贝格','MF','伯恩利','8',0],['奥斯卡·鲍勃','MF','曼城','11',0],['谢尔德鲁普','MF','本菲卡','20',0],['哈兰德','FW','曼城','7',0],['瑟洛特','FW','马竞','9',0],['努萨','FW','莱比锡','19',0]];
+P['瑞士']=[['科贝尔','GK','多特蒙德','1',0],['索默','GK','国米','12',0],['阿坎吉','DF','国米','5',0],['埃尔韦迪','DF','门兴','4',0],['里卡多·罗德里格斯','DF','贝蒂斯','13',0],['维德默','DF','美因茨','3',0],['扎卡','MF','桑德兰','10',1],['弗罗伊勒','MF','博洛尼亚','8',0],['埃比舍尔','MF','博洛尼亚','20',0],['索乌','MF','塞维利亚','15',0],['恩博洛','FW','摩纳哥','7',0],['阿姆杜尼','FW','伯恩利','9',0],['鲁本·巴尔加斯','FW','奥格斯堡','11',0]];
+P['阿尔及利亚']=[['泽格巴','GK','达马克','1',0],['曼德雷亚','GK','卡昂','23',0],['艾特-努里','DF','曼城','3',0],['本塞拜尼','DF','多特蒙德','2',0],['吉戈','DF','马赛','5',0],['曼迪','DF','比利亚雷亚尔','4',0],['本纳赛尔','MF','AC米兰','6',0],['阿瓦尔','MF','吉达联合','8',0],['沙伊比','MF','法兰克福','10',0],['泽鲁基','MF','费耶诺德','14',0],['马赫雷斯','FW','吉达国民','7',1],['阿穆拉','FW','沃尔夫斯堡','9',0],['本拉赫马','FW','里昂','13',0],['古伊里','FW','雷恩','11',0]];
+P['埃及']=[['谢纳维','GK','开罗国民','1',0],['赫加齐','DF','吉达联合','6',0],['阿卜杜勒穆奈姆','DF','开罗国民','2',0],['埃尔内尼','MF','阿森纳','5',0],['阿舒尔','MF','开罗国民','10',0],['齐佐','MF','扎马雷克','11',0],['萨拉赫','FW','利物浦','7',1],['马尔穆什','FW','曼城','9',0],['特雷泽盖','FW','赖扬','15',0],['穆斯塔法·穆罕默德','FW','南特','19',0]];
+P['土耳其']=[['居诺克','GK','贝西克塔斯','1',0],['恰克尔','GK','特拉布宗','12',0],['切利克','DF','罗马','2',0],['德米拉尔','DF','吉达国民','4',0],['巴尔达克奇','DF','加拉塔萨雷','6',0],['恰尔汗奥卢','MF','国米','10',1],['柯克曲','MF','本菲卡','5',0],['厄兹詹','MF','多特蒙德','8',0],['居莱尔','FW','皇马','11',0],['伊尔迪兹','FW','尤文','9',0],['耶尔马兹','FW','加拉塔萨雷','7',0]];
+P['巴拉圭']=[['卡洛斯·科罗内尔','GK','纽约红牛','1',0],['古斯塔沃·戈麦斯','DF','帕尔梅拉斯','3',0],['巴尔布埃纳','DF','莫斯科迪纳摩','4',0],['阿尔德雷特','DF','赫塔费','2',0],['阿隆索','DF','克拉斯诺达尔','15',0],['阿尔米隆','MF','亚特兰大联','10',1],['恩西索','MF','斯特拉斯堡','19',0],['比利亚桑蒂','MF','格雷米奥','6',0],['索萨','MF','诺丁汉森林','17',0],['迭戈·戈麦斯','MF','迈阿密国际','14',0],['阿瓦洛斯','FW','阿根廷青年人','21',0],['萨纳夫里亚','FW','都灵','9',0]];
+P['澳大利亚']=[['马修·瑞安','GK','莱万特','1',1],['高西','GK','维拉','12',0],['苏塔','DF','莱斯特城','19',0],['罗尔斯','DF','哈茨','4',0],['伯吉斯','DF','伊普斯维奇','5',0],['博斯','DF','韦斯特洛','3',0],['欧文','MF','圣保利','22',0],['麦格里','MF','米堡','8',0],['伊兰昆达','MF','拜仁','20',0],['库奥尔','FW','纽卡斯尔联','11',0],['延吉','FW','朴茨茅斯','9',0]];
+// Fill remaining with key players
+const MORE={南非:[['威廉姆斯','GK','日落','1',1],['福斯特','FW','伯恩利','9',0],['兹瓦内','MF','日落','10',0]],捷克:[['绍切克','MF','西汉姆联','10',1],['希克','FW','勒沃库森','9',0],['曹法尔','DF','西汉姆联','5',0]],波黑:[['哲科','FW','沙尔克','11',1],['科拉希纳茨','DF','亚特兰大','5',0],['皮亚尼奇','MF','沙迦','8',0]],卡塔尔:[['阿菲夫','FW','萨德','10',1],['阿里','FW','杜海勒','9',0]],海地:[['纳宗','FW','未知','9',1],['贝勒加德','MF','狼队','10',0]],苏格兰:[['罗伯逊','DF','利物浦','3',1],['麦克托米奈','MF','那不勒斯','4',0],['麦金','MF','维拉','7',0],['蒂尔尼','DF','皇家社会','5',0]],库拉索:[['巴库纳','MF','未知','10',1]],科特迪瓦:[['凯西','MF','吉达国民','8',1],['阿马德·迪亚洛','FW','曼联','11',0],['阿莱','FW','多特蒙德','9',0]],厄瓜多尔:[['凯塞多','MF','切尔西','23',0],['因卡皮耶','DF','阿森纳','3',0],['恩纳·瓦伦西亚','FW','未知','13',1]],突尼斯:[['斯希里','MF','法兰克福','17',1],['梅布里','MF','伯恩利','10',0]],佛得角:[['门德斯','FW','未知','10',1]],沙特:[['达瓦萨里','FW','利雅得新月','10',1],['卡诺','MF','利雅得新月','8',0]],伊朗:[['塔雷米','FW','奥林匹亚科斯','9',1],['阿兹蒙','FW','罗马','10',0]],新西兰:[['伍德','FW','诺丁汉森林','9',1]],塞内加尔:[['马内','FW','利雅得胜利','10',1],['库利巴利','DF','利雅得新月','3',0],['杰克逊','FW','切尔西','9',0]],伊拉克:[['侯赛因','FW','未知','9',1],['伊克巴尔','MF','乌得勒支','10',0]],奥地利:[['阿拉巴','DF','皇马','8',1],['莱默尔','MF','拜仁','20',0],['萨比策','MF','多特蒙德','10',0],['阿瑙托维奇','FW','国米','7',0]],约旦:[['塔马里','FW','雷恩','10',1]],民主刚果:[['比斯萨卡','DF','西汉姆联','2',0],['巴坎布','FW','贝蒂斯','10',0],['姆本巴','DF','未知','5',1]],乌兹别克:[['肖穆罗多夫','FW','未知','9',1],['库萨诺夫','DF','曼城','5',0]],哥伦比亚:[['路易斯·迪亚斯','FW','拜仁','7',1],['哈梅斯','MF','明尼苏达联','10',0],['里奥斯','MF','帕尔梅拉斯','6',0]],加纳:[['帕蒂','MF','比利亚雷亚尔','5',1],['库杜斯','MF','西汉姆联','11',0]],巴拿马:[['卡拉斯基亚','MF','未知','8',1],['戈多伊','DF','未知','5',0]]};
+Object.entries(MORE).forEach(([k,v])=>{if(!P[k])P[k]=v;});
+
+// ═══════════════════════════════ STATE ═══════════════════════════════
+let ctab='groups',tz='bj',fav=JSON.parse(localStorage.getItem('wc2026_favs')||'[]'),RESULTS=JSON.parse(localStorage.getItem('wc2026_results')||'{}'),pGroup='';
+function GR(mn){return RESULTS[mn]||null;}function SR(){localStorage.setItem('wc2026_results',JSON.stringify(RESULTS));}
+function toggleTheme(){const cur=document.documentElement.getAttribute('data-theme'),next=cur==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',next);document.getElementById('themeBtn').innerHTML=next==='dark'?'☀️ 浅色':'🌙 深色';localStorage.setItem('wc2026_theme',next);}
+(function(){const s=localStorage.getItem('wc2026_theme');if(s){document.documentElement.setAttribute('data-theme',s);document.getElementById('themeBtn').innerHTML=s==='dark'?'☀️ 浅色':'🌙 深色';}})();
+function updateCD(){const all=[...GM,...KO];const now=new Date();let next=null;for(const m of all){const[_,mo,da]=m[1].match(/(\d+)\.(\d+)/)||[];if(!mo)continue;const[hr,mi]=m[2].split(':').map(Number);const d=new Date(2026,parseInt(mo)-1,parseInt(da),hr,mi);if(d>now&&(!next||d<next.date))next={date:d,match:m};}if(!next){document.getElementById('cdTimer').textContent='已结束';return;}const diff=next.date-now;document.getElementById('cdNext').textContent=`距 ${next.match[0]} ${next.match[4]} vs ${next.match[5]}：`;document.getElementById('cdTimer').textContent=`${Math.floor(diff/864e5)}天${Math.floor((diff%864e5)/36e5)}时${Math.floor((diff%36e5)/6e4)}分`;}setInterval(updateCD,6e4);updateCD();
+
+// ═══════════════════════════════ MATCH CARD ═══════════════════════════════
+function getTime(m){return tz==='bj'?m[2]:m[3];}
+function buildCard(m,isKO){
+  const[mn,date,bj,local,t1,t2,g,rnd,skey]=m,s=S(skey),isOpener=(mn==='M1'),isFinal=(rnd==='决赛');
+  let cls='match-card';if(isFinal)cls+=' final-match';else if(isOpener)cls+=' opener';else if(m.length>9&&m[9])cls+=' hl';
+  const rl=isKO?rnd:`${g}组 · ${rnd}`,gCls=isKO?'g-KO':'g-'+g,time=tz==='bj'?bj:local;
+  const res=GR(mn),hasRes=!!res;
+  const scoreHTML=hasRes?`<div class="score">${res.t1s} - ${res.t2s}</div>`:'';
+  const ds=`${mn} ${t1} ${t2} ${g} ${rnd} ${s.city} ${s.name} ${date}`;
+  return`<div class="${cls}${hasRes?' has-result':''}" data-search="${ds}" data-gr="${g}" data-rnd="${rnd}" data-date="${date}"><div class="mtop"><span class="gnum">${mn}</span><span class="gbadge ${gCls}">${rl}</span><span class="gnum">${date}</span></div><div class="teams">${t1}<span class="vs">VS</span>${t2}</div>${scoreHTML}<div class="minfo"><span>🕐${time}</span><span>🏟️${s.name}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span></div><div class="detail-link"><a href="javascript:void(0)" onclick="event.stopPropagation();openMatchDetail(${JSON.stringify(m).replace(/"/g,'&quot;')},${isKO})">📋 查看详情 →</a></div></div>`;
+}
+
+// ═══════════════════════════════ MODAL ═══════════════════════════════
+function openMatchDetail(m,isKO){
+  const[mn,date,bj,local,t1,t2,g,rnd,skey]=m;
+  const s=S(skey),note=isKO&&m.length>7?m[7]:'';
+  const k1=tk(t1),k2=tk(t2);
+  function fr(tn){for(const key of Object.keys(P)){if(key===tn||key.includes(tn)||tn.includes(key))return P[key];}return[];}
+  function gti(tn){for(const key of Object.keys(TEAMS_D)){if(key===tn||key.includes(tn)||tn.includes(key))return TEAMS_D[key];}return null;}
+  const r1=fr(k1),r2=fr(k2),ti1=gti(k1),ti2=gti(k2);
+  const res=GR(mn);
+  const r1k=RANKINGS[k1]||'-',r2k=RANKINGS[k2]||'-';
+  const resultHTML=res?`<div style="text-align:center;font-size:2rem;font-weight:800;color:var(--accent);margin:12px 0">${res.t1s} - ${res.t2s}${res.notes?'<span style="font-size:.8rem;color:var(--muted)"> ('+res.notes+')</span>':''}</div>`:'';
+
+  function renderRosterByPos(label,roster){
+    if(!roster||!roster.length)return`<div class="roster-side"><h5>${label}</h5><p style="font-size:.72rem;color:var(--muted)">暂无球员数据</p></div>`;
+    const posOrder=['GK','DF','MF','FW'];const byPos={};posOrder.forEach(p=>byPos[p]=[]);
+    roster.forEach(p=>{const pos=p[1];if(byPos[pos])byPos[pos].push(p);else byPos.GK.push(p);});
+    let html=`<div class="roster-side"><h5>${label}</h5>`;
+    posOrder.forEach(pos=>{if(!byPos[pos].length)return;html+=`<div class="roster-pos"><div class="pos-h">${pos==='GK'?'🧤 门将':pos==='DF'?'🛡️ 后卫':pos==='MF'?'🎯 中场':'⚽ 前锋'} (${byPos[pos].length}人)</div><div class="roster-grid">`;byPos[pos].forEach(p=>{const[nm,po,club,num,isCap]=p;html+=`<div class="roster-row${isCap?' cap':''}"><span class="rnum">${num}</span><span class="rname">${nm}${isCap?' ⭐':''}</span><span class="rclub">${club}</span></div>`;});html+='</div></div>';});
+    html+='</div>';return html;
+  }
+
+  const editHTML=`<div class="result-edit"><input type="number" id="rs1_${mn}" placeholder="?" style="width:42px"><span>-</span><input type="number" id="rs2_${mn}" placeholder="?" style="width:42px"><input type="text" id="rsn_${mn}" placeholder="备注(可选)" style="width:90px"><button class="btn-sm" onclick="saveResult('${mn}')">💾 保存比分</button></div>`;
+
+  const html=`<button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="m-title">${t1} VS ${t2}</div>
+    <div class="m-sub">${isKO?rnd:g+'组 · '+rnd} | ${mn} | ${date} 北京时间 ${bj} | 当地 time ${local||'待定'}</div>
+    ${resultHTML}
+    <div class="m-section"><h4>📋 比赛配置信息</h4>
+      <div class="m-config">
+        <span>🇨🇳 北京 time：${date} ${bj}</span><span>📍 当地 time：${local||'待定'}</span>
+        <span>🏟️ 比赛场馆：${s.name}</span><span>🏙️ 所在城市：${s.city} ${s.country}</span>
+        <span>🕐 时区：${s.tz}</span><span>👥 球场容量：${s.cap} 座</span>
+        <span>🌿 草皮类型：${s.surf}</span><span>🏗️ 屋顶结构：${s.roof}</span>
+        <span>📅 建成时间：${s.open}</span><span>📊 FIFA排名：#${r1k} vs #${r2k}</span>
+        ${ti1?`<span>👔 ${k1} 主教练：${ti1.mgr}</span>`:''}${ti2?`<span>👔 ${k2} 主教练：${ti2.mgr}</span>`:''}
+        ${ti1?`<span>⭐ ${k1} 队长：${ti1.cap}</span>`:''}${ti2?`<span>⭐ ${k2} 队长：${ti2.cap}</span>`:''}
+        ${s.note?`<span>📌 ${s.note}</span>`:''}${note?`<span>📌 ${note}</span>`:''}
+      </div>
+    </div>
+    <div class="m-section"><h4>👥 双方球员完整名单（按位置分组）</h4>
+      <div class="roster-dual">
+        ${renderRosterByPos(t1,r1)}
+        ${renderRosterByPos(t2,r2)}
+      </div>
+    </div>
+    ${editHTML}`;
+
+  document.getElementById('modalContent').innerHTML=html;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+function saveResult(mn){const s1=parseInt(document.getElementById('rs1_'+mn)?.value);const s2=parseInt(document.getElementById('rs2_'+mn)?.value);if(isNaN(s1)||isNaN(s2))return;const notes=document.getElementById('rsn_'+mn)?.value||'';RESULTS[mn]={t1s:s1,t2s:s2,notes};SR();closeModal();renderTab();}
+
+// ═══════════════════════════════ RENDER ═══════════════════════════════
+function renderGroups(){document.getElementById('groupsContent').innerHTML=GM.map(m=>buildCard(m,false)).join('');AF();}
+function renderKO(){document.getElementById('koContent').innerHTML=KO.map(m=>buildCard(m,true)).join('');AF();}
+function renderAll(){document.getElementById('allContent').innerHTML=[...GM.map(m=>buildCard(m,false)),...KO.map(m=>buildCard(m,true))].join('');AF();}
+function renderStandings(){
+  const groups={};'ABCDEFGHIJKL'.split('').forEach(g=>{groups[g]=[];});
+  GM.forEach(m=>{const g=m[6],t1=tk(m[4]),t2=tk(m[5]);if(!groups[g])return;if(!groups[g].find(t=>t.name===t1))groups[g].push({name:t1,flag:m[4]});if(!groups[g].find(t=>t.name===t2))groups[g].push({name:t2,flag:m[5]});});
+  const pts={};
+  Object.entries(RESULTS).forEach(([mn,res])=>{const m=[...GM,...KO].find(x=>x[0]===mn);if(!m||(m[7]&&m[7].includes('决赛')))return;const t1=tk(m[4]),t2=tk(m[5]);if(!pts[t1])pts[t1]={p:0,gf:0,ga:0};if(!pts[t2])pts[t2]={p:0,gf:0,ga:0};pts[t1].gf+=res.t1s;pts[t1].ga+=res.t2s;pts[t2].gf+=res.t2s;pts[t2].ga+=res.t1s;if(res.t1s>res.t2s)pts[t1].p+=3;else if(res.t1s<res.t2s)pts[t2].p+=3;else{pts[t1].p+=1;pts[t2].p+=1;}});
+  let html='';
+  Object.keys(groups).sort().forEach(g=>{const teams=groups[g];teams.forEach(t=>{const p=pts[t.name];t.pts=p?p.p:0;t.gf=p?p.gf:0;t.ga=p?p.ga:0;t.gd=t.gf-t.ga;});teams.sort((a,b)=>b.pts-a.pts||b.gd-a.gd||b.gf-a.gf);html+=`<div class="standings-group"><h3>${g}组</h3><table class="stg-table"><thead><tr><th>#</th><th>球队</th><th>赛</th><th>分</th><th>GF</th><th>GA</th><th>GD</th></tr></thead><tbody>`;teams.forEach((t,i)=>{let cls='';if(i<2)cls='adv';else if(i===2)cls='adv3';html+=`<tr class="${cls}"><td>${i+1}</td><td class="tname">${t.flag} ${t.name} <span style="font-size:.63rem;color:var(--muted)">#${RANKINGS[t.name]||'-'}</span></td><td>0</td><td><b>${t.pts}</b></td><td>${t.gf}</td><td>${t.ga}</td><td>${t.gd}</td></tr>`;});html+='</tbody></table></div>';});
+  document.getElementById('stgContainer').innerHTML=html||'<p style="color:var(--muted);text-align:center;padding:40px">暂无积分数据，比赛开始后将自动更新</p>';
+}
+function renderBracket(){
+  const rounds=[{n:'1/16决赛',m:KO.filter(x=>x[5]==='1/16决赛')},{n:'1/8决赛',m:KO.filter(x=>x[5]==='1/8决赛')},{n:'1/4决赛',m:KO.filter(x=>x[5]==='1/4决赛')},{n:'半决赛',m:KO.filter(x=>x[5]==='半决赛')},{n:'决赛',m:KO.filter(x=>x[5]==='决赛'||x[5]==='三四名决赛')}];
+  let html='<div class="bracket">';
+  rounds.forEach(r=>{html+=`<div class="bracket-col"><h4>${r.n}</h4>`;r.m.forEach(m=>{const[mn,,,,matchup,,skey]=m,s=S(skey),res=GR(mn);html+=`<div class="bracket-match"><div class="bt">${matchup}</div><div class="bd">${res?res.t1s+'-'+res.t2s:'vs'} | ${s.city}</div></div>`;});html+='</div>';});
+  html+='</div>';document.getElementById('brContainer').innerHTML=html;
+}
+function renderStadiums(){
+  let h='';Object.entries(STADIUMS).forEach(([k,s])=>{const gc=GM.filter(m=>m[8]===k).length,kc=KO.filter(m=>m[6]===k).length;h+=`<div class="stadium-card"><div class="scity">${s.city}</div><div class="sname">🏟️ ${s.name}</div><div class="scountry">${s.country}</div><div class="sdet"><span>🕐${s.tz}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span><span>🏗️${s.roof}</span><span>📅${s.open}</span></div>${s.note?`<div class="snote">📌 ${s.note}</div>`:''}<div style="margin-top:5px;font-size:.7rem;color:var(--accent)">📅 小组${gc}场 + 淘汰${kc}场 = 共${gc+kc}场</div></div>`;});
+  document.getElementById('stadiumGrid').innerHTML=h;
+}
+function renderPlayerGroupSelector(fg){const c=document.getElementById('playerGroupSelector');let h='';'ABCDEFGHIJKL'.split('').forEach(g=>h+=`<span class="ps-chip${fg===g?' active':''}" onclick="FPG('${fg===g?'':g}')">${g}组</span>`);h+=`<span class="ps-chip${!fg?' active':''}" onclick="FPG('')">全部</span>`;c.innerHTML=h;const sel=document.getElementById('playerTeamFilter');sel.innerHTML='<option value="">全部球队</option>';Object.keys(P).sort().forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});}
+function FPG(g){pGroup=g;document.getElementById('playerTeamFilter').value='';renderPlayerGroupSelector(g);RP();}
+function RP(){
+  const search=document.getElementById('playerSearch').value.toLowerCase().trim(),team=document.getElementById('playerTeamFilter').value;
+  let html='',total=0;
+  Object.keys(P).sort().forEach(t=>{const roster=P[t];if(!roster.length)return;const info=TEAMS_D[t];if(!info)return;if(pGroup&&info.g!==pGroup)return;if(team&&t!==team)return;let f=roster;if(search)f=roster.filter(p=>p[0].includes(search)||p[2].includes(search));if(!f.length)return;html+=`<div style="margin-bottom:16px"><div class="player-team-title">${t}</div><div class="player-team-meta">${info.g}组 | 👔${info.mgr} | ⭐${info.cap} | FIFA #${RANKINGS[t]||'-'}</div><div class="player-grid">`;f.forEach(p=>{const[nm,pos,club,num,isCap]=p;html+=`<div class="player-card${isCap?' captain':''}"><span class="pnum">${num}</span><div class="pinfo"><div class="pname">${nm}${isCap?' ⭐':''}</div><div class="pdetail"><span class="ppos">${pos}</span>${club}</div></div></div>`;});html+='</div></div>';total+=f.length;});
+  document.getElementById('playerRoster').innerHTML=html||'<div class="no-results">👤 没有匹配的球员</div>';document.getElementById('playerCount').textContent=`共 ${total} 人`;
+}
+function renderFavs(){const teams=[...new Set(GM.map(m=>tk(m[4])))].sort();let h='';teams.forEach(t=>{h+=`<span class="fav-chip${fav.includes(t)?' active':''}" onclick="toggleFav('${t}')">⭐${t}</span>`;});document.getElementById('favBar').innerHTML=h;}
+function toggleFav(t){if(fav.includes(t))fav=fav.filter(x=>x!==t);else fav.push(t);localStorage.setItem('wc2026_favs',JSON.stringify(fav));renderFavs();renderTab();}
+function favFilter(m){if(!fav.length)return true;return fav.includes(tk(m[4]))||fav.includes(tk(m[5]));}
+
+// ═══════════════════════════════ FILTERS ═══════════════════════════════
+function populateFilters(){
+  const dates=new Set(),cities=new Set();
+  [...GM,...KO].forEach(m=>{dates.add(m[1]);cities.add(S(m[8]||m[6]).city);});
+  const ds=document.getElementById('dateFilter');[...dates].sort().forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=d;ds.appendChild(o);});
+  const cs=document.getElementById('cityFilter');[...cities].sort().forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cs.appendChild(o);});
+  const rs=document.getElementById('roundFilter');['第1轮','第2轮','第3轮','1/16决赛','1/8决赛','1/4决赛','半决赛','三四名决赛','决赛'].forEach(r=>{const o=document.createElement('option');o.value=r;o.textContent=r;rs.appendChild(o);});
+  const gs=document.getElementById('groupFilter');'ABCDEFGHIJKL'.split('').forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent=g+'组';gs.appendChild(o);});
+}
+function switchTZ(v){tz=v;renderTab();}
+function AF(){
+  const search=document.getElementById('searchInput').value.toLowerCase().trim(),g=document.getElementById('groupFilter').value,d=document.getElementById('dateFilter').value,r=document.getElementById('roundFilter').value,c=document.getElementById('cityFilter').value;
+  let n=0;
+  document.querySelectorAll('.match-card').forEach(card=>{const ds=(card.getAttribute('data-search')||'').toLowerCase();let show=true;if(search&&!ds.includes(search))show=false;if(g&&!ds.includes(g))show=false;if(d&&!ds.includes(d))show=false;if(r&&!ds.includes(r))show=false;if(c&&!ds.includes(c))show=false;card.style.display=show?'':'none';if(show)n++;});
+  document.getElementById('resultCount').textContent=`共 ${n} 场`;
+  document.getElementById('noResults').style.display=n===0?'':'none';
+}
+function RF(){document.getElementById('searchInput').value='';document.getElementById('groupFilter').value='';document.getElementById('dateFilter').value='';document.getElementById('roundFilter').value='';document.getElementById('cityFilter').value='';AF();}
+
+// ═══════════════════════════════ TABS ═══════════════════════════════
+function ST(tab){
+  ctab=tab;document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('[id^="tab-"]').forEach(d=>d.style.display='none');
+  const el=document.getElementById('tab-'+tab);if(el)el.style.display='';
+  const map={groups:'小组赛',knockout:'淘汰赛',standings:'积分榜',bracket:'对阵图',players:'球员',stadiums:'场馆',all:'全部比赛'};
+  const btn=[...document.querySelectorAll('.tab-btn')].find(b=>b.textContent.includes(map[tab]));if(btn)btn.classList.add('active');
+  if(tab==='groups')renderGroups();else if(tab==='knockout')renderKO();else if(tab==='standings')renderStandings();else if(tab==='bracket')renderBracket();else if(tab==='players'){renderPlayerGroupSelector('');RP();}else if(tab==='stadiums')renderStadiums();else if(tab==='all')renderAll();
+  AF();
+}
+function renderTab(){if(ctab==='groups')renderGroups();else if(ctab==='knockout')renderKO();else if(ctab==='all')renderAll();else if(ctab==='standings')renderStandings();else if(ctab==='bracket')renderBracket();}
+
+// ═══════════════════════════════ INIT ═══════════════════════════════
+populateFilters();renderGroups();renderKO();renderAll();renderStandings();renderBracket();renderStadiums();renderFavs();renderPlayerGroupSelector('');RP();updateCD();
+</script>
+</body>
+</html>
