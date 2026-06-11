@@ -217,6 +217,7 @@ function buildCard(m,isKO){
   else if(matchState==='in'||(matchDate&&matchDate<=now&&!hasRes))status='live';
   else if(hasRes)status='done';
   else status='upcoming';
+  const isLive=status==='live';
   let scoreDisplay='';
   if(hasRes)scoreDisplay=`<div class="score-big">${res.t1s} - ${res.t2s}</div>`;
   else if(isLive)scoreDisplay=`<div class="live-badge">LIVE</div>`;
