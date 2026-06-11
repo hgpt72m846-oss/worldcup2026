@@ -218,7 +218,7 @@ function buildCard(m,isKO){
   if(hasRes)status='done';else if(isLive)status='live';else status='upcoming';
   let scoreDisplay='';
   if(hasRes)scoreDisplay=`<div class="score-big">${res.t1s} - ${res.t2s}</div>`;
-  else if(isLive)scoreDisplay=`<div class="score-big">0 - 0</div><div class="live-badge">LIVE</div>`;
+  else if(isLive)scoreDisplay=`<div class="live-badge">LIVE</div>`;
   return`<div class="${cls}${hasRes?' has-result':''}${hasRes?' played':''}${isLive?' live-match':''}" data-search="${ds}" data-gr="${g}" data-rnd="${rnd}" data-date="${date}" onclick="openMatchDetail('${mn}')" title="点击查看详情"><div class="mtop"><span class="gnum">${mn}</span><span class="gbadge ${gCls}">${rl}</span><span class="gnum">${date}</span></div><div class="teams">${t1}<span class="vs">VS</span>${t2}</div>${scoreDisplay}<div class="minfo"><span>🕐${time}</span><span>🏟️${s.name}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span></div><div class="status-dot ${status}"></div></div>`;
 }
 
