@@ -355,40 +355,50 @@ window.addEventListener('scroll',function(){const b=document.getElementById('btt
 
 // ═══ Live scores from ESPN ═══
 const ES={墨西哥:'Mexico',南非:'South Africa',韩国:'South Korea',捷克:'Czechia',加拿大:'Canada',波黑:'Bosnia & Herzegovina',卡塔尔:'Qatar',瑞士:'Switzerland',巴西:'Brazil',摩洛哥:'Morocco',海地:'Haiti',苏格兰:'Scotland',美国:'United States',巴拉圭:'Paraguay',澳大利亚:'Australia',土耳其:'Turkey',德国:'Germany',库拉索:'Curaçao',科特迪瓦:'Ivory Coast',厄瓜多尔:'Ecuador',荷兰:'Netherlands',日本:'Japan',瑞典:'Sweden',突尼斯:'Tunisia',西班牙:'Spain',佛得角:'Cape Verde',沙特:'Saudi Arabia',乌拉圭:'Uruguay',比利时:'Belgium',埃及:'Egypt',伊朗:'Iran',新西兰:'New Zealand',法国:'France',塞内加尔:'Senegal',伊拉克:'Iraq',挪威:'Norway',阿根廷:'Argentina',阿尔及利亚:'Algeria',奥地利:'Austria',约旦:'Jordan',葡萄牙:'Portugal',民主刚果:'DR Congo',哥伦比亚:'Colombia',英格兰:'England',克罗地亚:'Croatia',加纳:'Ghana',巴拿马:'Panama',乌兹别克:'Uzbekistan'};
+let liveStatus='idle'; // idle | loading | ok | err
 function fetchLiveScores(){
-  fetch('https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard')
-    .then(r=>r.json()).then(data=>{
-      let updated=0;
+  if(liveStatus==='loading')return;liveStatus='loading';
+  fetch('https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?t='+Date.now())
+    .then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()})
+    .then(data=>{
+      liveStatus='ok';let updated=0;
       (data.events||[]).forEach(e=>{
-        const c=e.competitions[0];if(!c||c.competitors.length<2)return;
+        const c=e.competitions[0];if(!c||!c.competitors||c.competitors.length<2)return;
         const t1en=c.competitors[0].team.displayName;
         const t2en=c.competitors[1].team.displayName;
         const s1=parseInt(c.competitors[0].score||0);
         const s2=parseInt(c.competitors[1].score||0);
-        const st=e.status.type.state;if(st==='pre')return; // skip not-started, keep 'in' and 'post'
+        const st=e.status.type.state;if(st==='pre')return;
+        // Direct lookup: try both English→Chinese mapping and direct name matching
         const t1cn=Object.keys(ES).find(k=>ES[k]===t1en)||'';
         const t2cn=Object.keys(ES).find(k=>ES[k]===t2en)||'';
-        if(!t1cn||!t2cn)return;
+        if(!t1cn||!t2cn){console.log('Unknown teams:',t1en,t2en);return;}
+        // Search all matches for these teams
         for(const key of Object.keys(AM)){
           const{m}=AM[key];const tn1=tk(m[4]),tn2=tk(m[5]);
           if((tn1===t1cn&&tn2===t2cn)||(tn1===t2cn&&tn2===t1cn)){
-            if(!RS[key]||RS[key].t1s!==s1||RS[key].t2s!==s2){
+            const old=RS[key];
+            if(!old||old.t1s!==s1||old.t2s!==s2){
               RS[key]={t1s:s1,t2s:s2,notes:''};sR();updated++;
+              console.log('⚽ Score updated:',key,tn1,s1+'-'+s2,tn2);
             }
+            break;
           }
         }
       });
       if(updated>0){
-        document.getElementById('progressFill').style.width=(Object.keys(RS).length/104*100)+'%';
-        document.getElementById('progressLabel').textContent=Object.keys(RS).length+'/104 场已赛';
-        document.getElementById('progressPct').textContent=Math.round(Object.keys(RS).length/104*100)+'%';
+        // Update progress bar
+        const played=Object.keys(RS).length;
+        const pf=document.getElementById('progressFill');if(pf)pf.style.width=(played/104*100)+'%';
+        const pl=document.getElementById('progressLabel');if(pl)pl.textContent=played+'/104 场已赛';
+        const pp=document.getElementById('progressPct');if(pp)pp.textContent=Math.round(played/104*100)+'%';
+        // Re-render current tab
         if(ctab==='matches')renderMatches();
         else if(ctab==='standings')renderStandings();
       }
-    }).catch(()=>{});
+    }).catch(err=>{liveStatus='err';console.log('Live score fetch failed:',err.message)});
 }
-setInterval(fetchLiveScores,30000);
-setTimeout(fetchLiveScores,500);
+setInterval(fetchLiveScores,30000);fetchLiveScores();
 
 // ═══ Init ═══
 (function(){let c='';'ABCDEFGHIJKL'.split('').forEach(g=>{c+=`<span class="chip" onclick="filterByGroup('${g}')">${g}组</span>`;});document.getElementById('gch').innerHTML=c;const gf=document.getElementById('gf');'ABCDEFGHIJKL'.split('').forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent=g+'组';gf.appendChild(o);});renderFavs();renderMatches();})();
