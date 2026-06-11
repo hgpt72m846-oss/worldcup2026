@@ -212,7 +212,7 @@ function buildCard(m,isKO){
   // Determine match status
   const matchDate=matchToDate(m);
   const now=new Date();let status='';
-  const matchState=res?.state||'';
+  const matchState=(res&&res.state)||'';
   if(matchState==='post')status='done';
   else if(matchState==='in'||(matchDate&&matchDate<=now&&!hasRes))status='live';
   else if(hasRes)status='done';
@@ -259,7 +259,7 @@ function openMD(mn){
 }
 function closeM(){document.getElementById('mo').classList.remove('open');}
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeM();});
-function saveR(mn){const s1=parseInt(document.getElementById('rs1_'+mn)?.value),s2=parseInt(document.getElementById('rs2_'+mn)?.value);if(isNaN(s1)||isNaN(s2))return;const n=document.getElementById('rsn_'+mn)?.value||'';RS[mn]={t1s:s1,t2s:s2,notes:n};sR();closeM();ST(ctab);}
+function saveR(mn){const s1=parseInt(document.getElementById('rs1_'+mn).value),s2=parseInt(document.getElementById('rs2_'+mn).value);if(isNaN(s1)||isNaN(s2))return;const n=document.getElementById('rsn_'+mn).value||'';RS[mn]={t1s:s1,t2s:s2,notes:n};sR();closeM();ST(ctab);}
 
 // ═══ Render ═══
 let todayFilter='';
@@ -325,9 +325,9 @@ function toggleFav(t){if(fav.includes(t))fav=fav.filter(x=>x!==t);else fav.push(
 
 // ═══ Filters ═══
 function AF(){
-  const s=document.getElementById('search').value.toLowerCase().trim(),gv=document.getElementById('gf')?.value;
+  const s=document.getElementById('search').value.toLowerCase().trim(),gv=(document.getElementById('gf')||{}).value;
   let n=0;
-  document.querySelectorAll('#content .mc').forEach(c=>{const d=(c.getAttribute('data-search')||'').toLowerCase();let sh=true;if(s&&!d.includes(s))sh=false;if(gfilt&&!d.includes(gfilt))sh=false;if(gv&&!d.includes(gv))sh=false;const mn=c.querySelector('.gn')?.textContent;if(mn){const m=[...GM,...KO].find(x=>x[0]===mn);if(m&&fav.length&&!fav.includes(tk(m[4]))&&!fav.includes(tk(m[5])))sh=false;}c.style.display=sh?'':'none';if(sh)n++;});
+  document.querySelectorAll('#content .mc').forEach(c=>{const d=(c.getAttribute('data-search')||'').toLowerCase();let sh=true;if(s&&!d.includes(s))sh=false;if(gfilt&&!d.includes(gfilt))sh=false;if(gv&&!d.includes(gv))sh=false;const gn=c.querySelector('.gn');const mn=gn?gn.textContent:'';if(mn){const m=[...GM,...KO].find(x=>x[0]===mn);if(m&&fav.length&&!fav.includes(tk(m[4]))&&!fav.includes(tk(m[5])))sh=false;}c.style.display=sh?'':'none';if(sh)n++;});
   if(ctab==='matches')document.getElementById('cnt').textContent=(todayFilter?'今天':'')+n+'场';
   document.getElementById('nodata').style.display=n===0?'':'none';
 }
@@ -385,7 +385,7 @@ function fetchScoresJSON(){
 }
 setInterval(fetchScoresJSON,30000);fetchScoresJSON();
 
-function quickSave(mn){const s1=parseInt(document.getElementById('qe1_'+mn)?.value),s2=parseInt(document.getElementById('qe2_'+mn)?.value);if(isNaN(s1)||isNaN(s2))return;RS[mn]={t1s:s1,t2s:s2,notes:''};sR();renderMatches();updateStandingsIfActive();}
+function quickSave(mn){const s1=parseInt(document.getElementById('qe1_'+mn).value),s2=parseInt(document.getElementById('qe2_'+mn).value);if(isNaN(s1)||isNaN(s2))return;RS[mn]={t1s:s1,t2s:s2,notes:''};sR();renderMatches();updateStandingsIfActive();}
 function updateStandingsIfActive(){if(ctab==='standings')renderStandings();}
 
 // ═══ Init ═══
