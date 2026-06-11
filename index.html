@@ -60,6 +60,11 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .score-big{font-size:1.8rem;font-weight:900;text-align:center;margin:4px 0 2px;color:var(--a);letter-spacing:6px;line-height:1.2}
 .mc .live-badge{display:inline-block;background:#ef4444;color:#fff;font-size:.45rem;font-weight:700;padding:1px 8px;border-radius:8px;animation:pulse 1s infinite;letter-spacing:2px;position:relative;top:-8px;margin-left:8px}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* Quick edit on card */
+.quick-edit{display:flex;gap:3px;align-items:center;justify-content:center;margin-top:4px;padding-top:4px;border-top:1px solid var(--b)}
+.quick-edit input{width:32px;padding:3px;text-align:center;background:var(--bg);border:1px solid var(--b);color:var(--t);border-radius:4px;font-size:.7rem}
+.quick-edit button{font-size:.65rem;padding:3px 8px;background:var(--a);color:#000;border:none;border-radius:4px;cursor:pointer}
 .mc .mi{display:flex;flex-wrap:wrap;gap:2px 5px;font-size:.62rem;color:var(--m);margin-top:4px}
 .mc .mi span{background:#1a2235;padding:2px 5px;border-radius:3px}
 [data-theme="light"] .mc .mi span{background:#f1f5f9}
@@ -211,9 +216,9 @@ function buildCard(m,isKO){
   const isLive=matchDate&&matchDate<=now&&!hasRes;
   if(hasRes)status='done';else if(isLive)status='live';else status='upcoming';
   let scoreDisplay='';
-  if(hasRes)scoreDisplay=`<div class="score-big">${res.t1s} - ${res.t2s}</div>${isLive?`<div class="live-badge">LIVE</div>`:''}`;
-  else if(isLive)scoreDisplay=`<div class="score-big">0 - 0</div><div class="live-badge">LIVE</div>`;
-  return`<div class="${cls}${hasRes?' has-result':''}${hasRes?' played':''}${isLive?' live-match':''}" data-search="${ds}" data-gr="${g}" data-date="${date}" onclick="openMD('${mn}')"><div class="mt"><span class="gn">${mn}</span><span class="gb ${gCls}">${rl}</span><span class="gn">${date}</span></div><div class="tm">${t1}<span class="vs">VS</span>${t2}</div>${scoreDisplay}<div class="mi"><span>${time}</span><span>${s.name}</span><span>${s.cap}</span></div><div class="status-dot ${status}"></div></div>`;
+  if(hasRes)scoreDisplay=`<div class="score-big">${res.t1s} - ${res.t2s}</div>`;
+  else if(isLive)scoreDisplay=`<div class="live-badge">LIVE</div>`;
+  return`<div class="${cls}${hasRes?' has-result':''}${hasRes?' played':''}${isLive?' live-match':''}" data-search="${ds}" data-gr="${g}" data-date="${date}" onclick="openMD('${mn}')"><div class="mt"><span class="gn">${mn}</span><span class="gb ${gCls}">${rl}</span><span class="gn">${date}</span></div><div class="tm">${t1}<span class="vs">VS</span>${t2}</div>${scoreDisplay}<div class="mi"><span>${time}</span><span>${s.name}</span><span>${s.cap}</span></div><div class="status-dot ${status}"></div><div class="quick-edit"><input type="number" id="qe1_${mn}" placeholder="?" size="2" onclick="event.stopPropagation()"><span>-</span><input type="number" id="qe2_${mn}" placeholder="?" size="2" onclick="event.stopPropagation()"><button onclick="event.stopPropagation();quickSave('${mn}')">💾</button></div></div>`;
 }
 function matchToDate(m){
   const[_,mo,da]=m[1].match(/(\d+)\.(\d+)/)||[];if(!mo)return null;
@@ -399,6 +404,9 @@ function fetchLiveScores(){
     }).catch(err=>{liveStatus='err';console.log('Live score fetch failed:',err.message)});
 }
 setInterval(fetchLiveScores,30000);fetchLiveScores();
+
+function quickSave(mn){const s1=parseInt(document.getElementById('qe1_'+mn)?.value),s2=parseInt(document.getElementById('qe2_'+mn)?.value);if(isNaN(s1)||isNaN(s2))return;RS[mn]={t1s:s1,t2s:s2,notes:''};sR();renderMatches();updateStandingsIfActive();}
+function updateStandingsIfActive(){if(ctab==='standings')renderStandings();}
 
 // ═══ Init ═══
 (function(){let c='';'ABCDEFGHIJKL'.split('').forEach(g=>{c+=`<span class="chip" onclick="filterByGroup('${g}')">${g}组</span>`;});document.getElementById('gch').innerHTML=c;const gf=document.getElementById('gf');'ABCDEFGHIJKL'.split('').forEach(g=>{const o=document.createElement('option');o.value=g;o.textContent=g+'组';gf.appendChild(o);});renderFavs();renderMatches();})();
