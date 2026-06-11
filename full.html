@@ -51,10 +51,8 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .g-A{background:#dc2626;color:#fff}.g-B{background:#2563eb;color:#fff}.g-C{background:#16a34a;color:#fff}.g-D{background:#ca8a04;color:#000}.g-E{background:#9333ea;color:#fff}.g-F{background:#0891b2;color:#fff}.g-G{background:#db2777;color:#fff}.g-H{background:#ea580c;color:#fff}.g-I{background:#4f46e5;color:#fff}.g-J{background:#65a30d;color:#000}.g-K{background:#c026d3;color:#fff}.g-L{background:#0d9488;color:#fff}.g-KO{background:#f59e0b;color:#000}
 .match-card .teams{font-size:.98rem;font-weight:700;text-align:center;margin:4px 0}
 .match-card .teams .vs{color:var(--muted);margin:0 7px;font-weight:400;font-size:.74rem}
-.match-card .score{font-size:1.8rem;font-weight:900;text-align:center;margin:8px 0;color:var(--accent);display:none;letter-spacing:6px}
-.match-card.has-result .score{display:block}
-.match-card .live-badge{display:none;position:absolute;top:6px;left:50%;transform:translateX(-50%);background:#ef4444;color:#fff;font-size:.55rem;font-weight:700;padding:2px 8px;border-radius:10px;animation:pulse 1s infinite;letter-spacing:2px}
-.match-card.live-match .live-badge{display:block}
+.score-big{font-size:2rem;font-weight:900;text-align:center;margin:6px 0 4px;color:var(--accent);letter-spacing:8px;line-height:1.2}
+.match-card .live-badge{display:inline-block;background:#ef4444;color:#fff;font-size:.5rem;font-weight:700;padding:2px 8px;border-radius:8px;animation:pulse 1s infinite;letter-spacing:2px;vertical-align:middle;margin-left:8px}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .match-card .minfo{display:flex;flex-wrap:wrap;gap:3px 6px;font-size:.7rem;color:var(--muted);margin-top:6px}
 .match-card .minfo span{background:#1a2235;padding:2px 6px;border-radius:4px}
@@ -218,7 +216,10 @@ function buildCard(m,isKO){
   ALL_MATCHES[mn]={m:m,isKO:isKO};
   const matchDate=matchToDate(m);const now=new Date();let status='';const isLive=matchDate&&matchDate<=now&&!hasRes;
   if(hasRes)status='done';else if(isLive)status='live';else status='upcoming';
-  return`<div class="${cls}${hasRes?' has-result':''}${hasRes?' played':''}${isLive?' live-match':''}" data-search="${ds}" data-gr="${g}" data-rnd="${rnd}" data-date="${date}" onclick="openMatchDetail('${mn}')" title="点击查看详情"><div class="mtop"><span class="gnum">${mn}</span><span class="gbadge ${gCls}">${rl}</span><span class="gnum">${date}</span></div><div class="teams">${t1}<span class="vs">VS</span>${t2}</div>${scoreHTML}${isLive?`<div class="score">0-0</div><div class="live-badge">LIVE</div>`:''}<div class="minfo"><span>🕐${time}</span><span>🏟️${s.name}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span></div><div class="status-dot ${status}"></div></div>`;
+  let scoreDisplay='';
+  if(hasRes)scoreDisplay=`<div class="score-big">${res.t1s} - ${res.t2s}</div>`;
+  else if(isLive)scoreDisplay=`<div class="score-big">0 - 0</div><div class="live-badge">LIVE</div>`;
+  return`<div class="${cls}${hasRes?' has-result':''}${hasRes?' played':''}${isLive?' live-match':''}" data-search="${ds}" data-gr="${g}" data-rnd="${rnd}" data-date="${date}" onclick="openMatchDetail('${mn}')" title="点击查看详情"><div class="mtop"><span class="gnum">${mn}</span><span class="gbadge ${gCls}">${rl}</span><span class="gnum">${date}</span></div><div class="teams">${t1}<span class="vs">VS</span>${t2}</div>${scoreDisplay}<div class="minfo"><span>🕐${time}</span><span>🏟️${s.name}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span></div><div class="status-dot ${status}"></div></div>`;
 }
 
 // ═══════════════════════════════ MODAL ═══════════════════════════════
