@@ -57,7 +57,7 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .match-card .minfo{display:flex;flex-wrap:wrap;gap:3px 6px;font-size:.7rem;color:var(--muted);margin-top:6px}
 .match-card .minfo span{background:#1a2235;padding:2px 6px;border-radius:4px}
 [data-theme="light"] .match-card .minfo span{background:#f1f5f9}
-.match-card .status-dot{position:absolute;top:7px;right:7px;width:6px;height:6px;border-radius:50%;z-index:1}
+.match-card .status-dot{position:absolute;top:6px;right:6px;width:5px;height:5px;border-radius:50%;z-index:1}
 .match-card .status-dot.upcoming{background:var(--accent)}.match-card .status-dot.live{background:#ef4444;animation:pulse 1s infinite}.match-card .status-dot.done{background:var(--muted)}
 .match-card.played{opacity:.7}.match-card.played:hover{opacity:.9}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -214,8 +214,11 @@ function buildCard(m,isKO){
   const scoreHTML=hasRes?`<div class="score">${res.t1s} - ${res.t2s}</div>`:'';
   const ds=`${mn} ${t1} ${t2} ${g} ${rnd} ${s.city} ${s.name} ${date}`;
   ALL_MATCHES[mn]={m:m,isKO:isKO};
-  const matchDate=matchToDate(m);const now=new Date();let status='';const isLive=matchDate&&matchDate<=now&&!hasRes;
-  if(hasRes)status='done';else if(isLive)status='live';else status='upcoming';
+  const matchDate=matchToDate(m);const now=new Date();let status='';const matchState=res?.state||'';
+  if(matchState==='post')status='done';
+  else if(matchState==='in'||(matchDate&&matchDate<=now&&!hasRes))status='live';
+  else if(hasRes)status='done';
+  else status='upcoming';
   let scoreDisplay='';
   if(hasRes)scoreDisplay=`<div class="score-big">${res.t1s} - ${res.t2s}</div>`;
   else if(isLive)scoreDisplay=`<div class="live-badge">LIVE</div>`;
@@ -354,7 +357,7 @@ function fetchLiveScores(){
       Object.entries(data.matches||{}).forEach(([mn,sc])=>{
         const old=RESULTS[mn];
         if(!old||old.t1s!==sc.t1s||old.t2s!==sc.t2s){
-          RESULTS[mn]={t1s:sc.t1s,t2s:sc.t2s,notes:''};SR();updated++;
+          RESULTS[mn]={t1s:sc.t1s,t2s:sc.t2s,notes:'',state:sc.state||''};SR();updated++;
         }
       });
       if(updated>0){updateProgress();renderTab();}
