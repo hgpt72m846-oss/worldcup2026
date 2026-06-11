@@ -341,6 +341,36 @@ function ST(tab){
 function renderTab(){if(ctab==='groups')renderGroups();else if(ctab==='knockout')renderKO();else if(ctab==='all')renderAll();else if(ctab==='standings')renderStandings();else if(ctab==='bracket')renderBracket();}
 
 // ═══════════════════════════════ INIT ═══════════════════════════════
+// ═══ Live scores ═══
+const ES={墨西哥:'Mexico',南非:'South Africa',韩国:'South Korea',捷克:'Czechia',加拿大:'Canada',波黑:'Bosnia & Herzegovina',卡塔尔:'Qatar',瑞士:'Switzerland',巴西:'Brazil',摩洛哥:'Morocco',海地:'Haiti',苏格兰:'Scotland',美国:'United States',巴拉圭:'Paraguay',澳大利亚:'Australia',土耳其:'Turkey',德国:'Germany',库拉索:'Curaçao',科特迪瓦:'Ivory Coast',厄瓜多尔:'Ecuador',荷兰:'Netherlands',日本:'Japan',瑞典:'Sweden',突尼斯:'Tunisia',西班牙:'Spain',佛得角:'Cape Verde',沙特:'Saudi Arabia',乌拉圭:'Uruguay',比利时:'Belgium',埃及:'Egypt',伊朗:'Iran',新西兰:'New Zealand',法国:'France',塞内加尔:'Senegal',伊拉克:'Iraq',挪威:'Norway',阿根廷:'Argentina',阿尔及利亚:'Algeria',奥地利:'Austria',约旦:'Jordan',葡萄牙:'Portugal',民主刚果:'DR Congo',哥伦比亚:'Colombia',英格兰:'England',克罗地亚:'Croatia',加纳:'Ghana',巴拿马:'Panama',乌兹别克:'Uzbekistan'};
+function fetchLiveScores(){
+  fetch('https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard')
+    .then(r=>r.json()).then(data=>{
+      let updated=0;
+      (data.events||[]).forEach(e=>{
+        const c=e.competitions[0];if(!c||c.competitors.length<2)return;
+        const t1en=c.competitors[0].team.displayName;
+        const t2en=c.competitors[1].team.displayName;
+        const s1=parseInt(c.competitors[0].score||0);
+        const s2=parseInt(c.competitors[1].score||0);
+        if(e.status.type.state==='pre')return;
+        const t1cn=Object.keys(ES).find(k=>ES[k]===t1en)||'';
+        const t2cn=Object.keys(ES).find(k=>ES[k]===t2en)||'';
+        if(!t1cn||!t2cn)return;
+        for(const key of Object.keys(ALL_MATCHES)){
+          const m=ALL_MATCHES[key].m;const tn1=tk(m[4]),tn2=tk(m[5]);
+          if((tn1===t1cn&&tn2===t2cn)||(tn1===t2cn&&tn2===t1cn)){
+            if(!RESULTS[key]||RESULTS[key].t1s!==s1||RESULTS[key].t2s!==s2){
+              RESULTS[key]={t1s:s1,t2s:s2,notes:''};SR();updated++;
+            }
+          }
+        }
+      });
+      if(updated>0){updateProgress();renderTab();}
+    }).catch(()=>{});
+}
+setInterval(fetchLiveScores,30000);setTimeout(fetchLiveScores,2000);
+
 populateFilters();renderGroups();renderKO();renderAll();renderStandings();renderBracket();renderStadiums();renderFavs();renderPlayerGroupSelector('');RP();updateCD();updateProgress();
 </script>
 </body>
