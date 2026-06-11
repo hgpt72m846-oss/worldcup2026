@@ -374,7 +374,7 @@ function fetchLiveScores(){
       if(updated>0){updateProgress();renderTab();}
     }).catch(()=>{});
 }
-setInterval(fetchLiveScores,30000);setTimeout(fetchLiveScores,500);
+setInterval(fetchLiveScores,30000);fetchLiveScores();
 
 populateFilters();renderGroups();renderKO();renderAll();renderStandings();renderBracket();renderStadiums();renderFavs();renderPlayerGroupSelector('');RP();updateCD();updateProgress();
 </script>
