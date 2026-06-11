@@ -199,6 +199,8 @@ function updateCD(){const all=[...GM,...KO];const now=new Date();let next=null;f
 
 // ═══════════════════════════════ MATCH CARD ═══════════════════════════════
 function getTime(m){return tz==='bj'?m[2]:m[3];}
+// Store all match data globally for easy lookup
+const ALL_MATCHES={};
 function buildCard(m,isKO){
   const[mn,date,bj,local,t1,t2,g,rnd,skey]=m,s=S(skey),isOpener=(mn==='M1'),isFinal=(rnd==='决赛');
   let cls='match-card';if(isFinal)cls+=' final-match';else if(isOpener)cls+=' opener';else if(m.length>9&&m[9])cls+=' hl';
@@ -206,12 +208,15 @@ function buildCard(m,isKO){
   const res=GR(mn),hasRes=!!res;
   const scoreHTML=hasRes?`<div class="score">${res.t1s} - ${res.t2s}</div>`:'';
   const ds=`${mn} ${t1} ${t2} ${g} ${rnd} ${s.city} ${s.name} ${date}`;
-  return`<div class="${cls}${hasRes?' has-result':''}" data-search="${ds}" data-gr="${g}" data-rnd="${rnd}" data-date="${date}"><div class="mtop"><span class="gnum">${mn}</span><span class="gbadge ${gCls}">${rl}</span><span class="gnum">${date}</span></div><div class="teams">${t1}<span class="vs">VS</span>${t2}</div>${scoreHTML}<div class="minfo"><span>🕐${time}</span><span>🏟️${s.name}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span></div><div class="detail-link"><a href="javascript:void(0)" onclick="event.stopPropagation();openMatchDetail(${JSON.stringify(m).replace(/"/g,'&quot;')},${isKO})">📋 查看详情 →</a></div></div>`;
+  ALL_MATCHES[mn]={m:m,isKO:isKO};
+  return`<div class="${cls}${hasRes?' has-result':''}" data-search="${ds}" data-gr="${g}" data-rnd="${rnd}" data-date="${date}"><div class="mtop"><span class="gnum">${mn}</span><span class="gbadge ${gCls}">${rl}</span><span class="gnum">${date}</span></div><div class="teams">${t1}<span class="vs">VS</span>${t2}</div>${scoreHTML}<div class="minfo"><span>🕐${time}</span><span>🏟️${s.name}</span><span>👥${s.cap}</span><span>🌿${s.surf}</span></div><div class="detail-link"><a href="javascript:void(0)" onclick="event.stopPropagation();openMatchDetail('${mn}')">📋 查看详情 →</a></div></div>`;
 }
 
 // ═══════════════════════════════ MODAL ═══════════════════════════════
-function openMatchDetail(m,isKO){
-  const[mn,date,bj,local,t1,t2,g,rnd,skey]=m;
+function openMatchDetail(mn){
+  const data=ALL_MATCHES[mn];if(!data)return;
+  const{m,isKO}=data;
+  const[_,date,bj,local,t1,t2,g,rnd,skey]=m;
   const s=S(skey),note=isKO&&m.length>7?m[7]:'';
   const k1=tk(t1),k2=tk(t2);
   function fr(tn){for(const key of Object.keys(P)){if(key===tn||key.includes(tn)||tn.includes(key))return P[key];}return[];}
