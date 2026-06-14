@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-14T02:27:55Z",
+  "updated": "2026-06-14T03:18:54Z",
   "source": "ESPN API",
   "matches": {
     "M4": {
@@ -15,7 +15,7 @@
     "M6": {
       "t1s": 0,
       "t2s": 1,
-      "state": "in"
+      "state": "post"
     },
     "M3": {
       "t1s": 1,
