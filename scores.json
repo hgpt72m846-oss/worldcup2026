@@ -1,9 +1,9 @@
 {
-  "updated": "2026-06-14T17:39:22Z",
+  "updated": "2026-06-14T18:24:57Z",
   "source": "ESPN API",
   "matches": {
     "M9": {
-      "t1s": 1,
+      "t1s": 4,
       "t2s": 1,
       "state": "in"
     },
