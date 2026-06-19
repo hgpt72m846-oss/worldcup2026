@@ -1,10 +1,20 @@
 {
-  "updated": "2026-06-18T20:01:25Z",
+  "updated": "2026-06-19T06:41:56Z",
   "source": "ESPN API",
   "matches": {
     "M25": {
       "t1s": 1,
       "t2s": 1,
+      "state": "post"
+    },
+    "M27": {
+      "t1s": 6,
+      "t2s": 0,
+      "state": "post"
+    },
+    "M28": {
+      "t1s": 1,
+      "t2s": 0,
       "state": "post"
     },
     "M20": {
