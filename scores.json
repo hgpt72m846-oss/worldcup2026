@@ -1,7 +1,42 @@
 {
-  "updated": "2026-06-19T06:41:56Z",
+  "updated": "2026-06-21T14:08:24Z",
   "source": "ESPN API",
   "matches": {
+    "M36": {
+      "t1s": 0,
+      "t2s": 4,
+      "state": "post"
+    },
+    "M33": {
+      "t1s": 5,
+      "t2s": 1,
+      "state": "post"
+    },
+    "M34": {
+      "t1s": 2,
+      "t2s": 1,
+      "state": "post"
+    },
+    "M35": {
+      "t1s": 0,
+      "t2s": 0,
+      "state": "post"
+    },
+    "M29": {
+      "t1s": 2,
+      "t2s": 0,
+      "state": "post"
+    },
+    "M30": {
+      "t1s": 0,
+      "t2s": 1,
+      "state": "post"
+    },
+    "M31": {
+      "t1s": 3,
+      "t2s": 0,
+      "state": "post"
+    },
     "M25": {
       "t1s": 1,
       "t2s": 1,
@@ -109,16 +144,6 @@
     },
     "M7": {
       "t1s": 4,
-      "t2s": 1,
-      "state": "post"
-    },
-    "M1": {
-      "t1s": 2,
-      "t2s": 0,
-      "state": "post"
-    },
-    "M2": {
-      "t1s": 2,
       "t2s": 1,
       "state": "post"
     }
