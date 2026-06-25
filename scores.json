@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-21T14:08:24Z",
+  "updated": "2026-06-25T05:47:08Z",
   "source": "ESPN API",
   "matches": {
     "M36": {
@@ -145,6 +145,31 @@
     "M7": {
       "t1s": 4,
       "t2s": 1,
+      "state": "post"
+    },
+    "M49": {
+      "t1s": 2,
+      "t2s": 1,
+      "state": "post"
+    },
+    "M52": {
+      "t1s": 4,
+      "t2s": 2,
+      "state": "post"
+    },
+    "M51": {
+      "t1s": 0,
+      "t2s": 3,
+      "state": "post"
+    },
+    "M53": {
+      "t1s": 0,
+      "t2s": 3,
+      "state": "post"
+    },
+    "M54": {
+      "t1s": 1,
+      "t2s": 0,
       "state": "post"
     }
   }
