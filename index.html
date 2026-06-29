@@ -256,14 +256,64 @@ function renderStandings(){
 }
 
 function renderBracket(){
-  const sts={'R32':'1/16决赛','R16':'1/8决赛','QF':'1/4决赛','SF':'半决赛','3rd':'三四名决赛','F':'决赛'};
-  let h='';
-  Object.entries(sts).forEach(([k,v])=>{
-    const ms=KO.filter(m=>m[5]===k);
-    h+=`<div class="koround"><h3>${v}</h3>`;
-    ms.forEach(m=>h+=buildMatchRow(m,true));
+  // Build bracket tree data structure
+  const rounds=['R32','R16','QF','SF','F'];
+  const rLabels={'R32':'1/16决赛','R16':'1/8决赛','QF':'1/4决赛','SF':'半决赛','F':'决赛'};
+  // Map which KO matches go to which round
+  const roundMatches={};rounds.forEach(r=>roundMatches[r]=KO.filter(m=>m[5]===r));
+  // Build connection map: for each match, which two earlier matches feed into it
+  const connections={};
+  KO.forEach(m=>{
+    const[mn,,,,mu]=m;
+    const parts=mu.split(' vs ');
+    parts.forEach(p=>{
+      const wm=p.replace('W-','').replace('L-','').trim();
+      if(wm.startsWith('M'))connections[wm]=mn;
+    });
+  });
+
+  // Render tree columns left to right
+  let h='<div style="overflow-x:auto;padding:8px 0;-webkit-overflow-scrolling:touch"><div style="display:flex;gap:4px;min-width:900px;padding:0 4px">';
+  rounds.forEach(r=>{
+    const ms=roundMatches[r];
+    h+=`<div style="flex:1;min-width:${r==='R32'?'100':r==='R16'?'120':r==='QF'?'130':'140'}px"><div style="text-align:center;font-size:.65rem;color:var(--a);font-weight:700;padding:6px 0 4px">${rLabels[r]}</div>`;
+    ms.forEach((m,i)=>{
+      const[mn,date,,,mu]=m;const s=SS(m[6]);const res=GR(mn);
+      // Team names
+      let t1='?',t2='?',scoreTxt='VS';
+      if(res){t1=mu.split(' vs ')[0];t2=mu.split(' vs ')[1];scoreTxt=`${res.t1s}-${res.t2s}`;}
+      else {const parts=mu.split(' vs ');t1=parts[0];t2=parts[1]||'?';}
+      const hasRes=!!res;
+      h+=`<div onclick="openMD('${mn}')" style="background:var(--s);border:1px solid var(--b);border-radius:6px;padding:5px 6px;margin:2px 0;cursor:pointer;font-size:.6rem;text-align:center;${hasRes?'':'opacity:.7'}">
+        <div style="font-size:.5rem;color:var(--m)">${mn}</div>
+        <div style="font-weight:600;display:flex;justify-content:space-between"><span>${t1.substring(0,8)}</span><span>${t2.substring(0,8)}</span></div>
+        <div style="font-weight:800;color:var(--a);font-size:.75rem">${scoreTxt}</div>
+        <div style="font-size:.48rem;color:var(--m)">${s.name.substring(0,10)}</div>
+      </div>`;
+    });
     h+='</div>';
   });
+  // Add 3rd place and final as extra column
+  const finalMs=KO.filter(m=>m[5]==='F'||m[5]==='3rd');
+  h+=`<div style="flex:1;min-width:130px"><div style="text-align:center;font-size:.65rem;color:var(--a);font-weight:700;padding:6px 0 4px">决赛/三四名</div>`;
+  finalMs.forEach(m=>{
+    const[mn,,,,mu]=m;const s=SS(m[6]);const res=GR(mn);
+    let scoreTxt='VS';if(res)scoreTxt=`${res.t1s}-${res.t2s}`;
+    h+=`<div onclick="openMD('${mn}')" style="background:var(--s);border:1px solid var(--b);border-radius:6px;padding:5px 6px;margin:2px 0;cursor:pointer;font-size:.6rem;text-align:center">
+      <div style="font-size:.5rem;color:var(--m)">${m[5]==='F'?'🏆决赛':'🥉三四名'} ${mn}</div>
+      <div style="font-weight:600">${mu.split(' vs ')[0].substring(0,10)} vs ${(mu.split(' vs ')[1]||'?').substring(0,10)}</div>
+      <div style="font-weight:800;color:var(--a);font-size:.75rem">${scoreTxt}</div>
+    </div>`;
+  });
+  h+='</div></div>';
+  // Also add match list below for easy viewing
+  h+='<div style="padding:8px"><div style="font-size:.75rem;color:var(--a);font-weight:700;padding:4px 0">全部淘汰赛对阵</div>';
+  const allStages={'R32':'1/16决赛','R16':'1/8决赛','QF':'1/4决赛','SF':'半决赛','3rd':'三四名决赛','F':'决赛'};
+  Object.entries(allStages).forEach(([k,v])=>{
+    const ms=KO.filter(m=>m[5]===k);
+    ms.forEach(m=>h+=buildMatchRow(m,true));
+  });
+  h+='</div>';
   document.getElementById('content').innerHTML=h;
 }
 
