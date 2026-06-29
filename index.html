@@ -87,6 +87,25 @@ body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;backgr
 .re{display:flex;gap:3px;align-items:center;margin-top:6px}.re input{width:30px;padding:2px;text-align:center;background:var(--s);border:1px solid var(--b);color:var(--t);border-radius:4px;font-size:.65rem}.re button{font-size:.6rem;padding:2px 5px;cursor:pointer}
 .nd{text-align:center;padding:40px;color:var(--m)}.btt{position:fixed;bottom:70px;right:12px;width:36px;height:36px;border-radius:50%;background:var(--a);color:#000;border:none;font-size:1rem;cursor:pointer;z-index:50;opacity:0;pointer-events:none;transition:opacity .3s;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .btt.show{opacity:1;pointer-events:auto}
+/* Bracket tree */
+.bwrap{overflow-x:auto;padding:10px 0;-webkit-overflow-scrolling:touch}
+.btree{display:flex;gap:0;min-width:1100px;padding:0 4px;align-items:stretch}
+.bcol{display:flex;flex-direction:column;justify-content:space-around;min-width:130px}
+.bcol.wide{min-width:150px}
+.bcol .rhdr{text-align:center;font-size:.62rem;color:var(--a);font-weight:700;padding:4px 0 2px;white-space:nowrap}
+.bmatch{background:var(--s);border:1px solid var(--b);border-radius:6px;padding:5px;margin:1px 2px;cursor:pointer;text-align:center;font-size:.55rem;position:relative}
+.bmatch .bm-info{font-size:.45rem;color:var(--m)}
+.bmatch .bm-teams{display:flex;justify-content:space-between;align-items:center;gap:3px;margin:2px 0}
+.bmatch .bm-team{flex:1;font-weight:600;font-size:.58rem;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bmatch .bm-score{font-weight:800;color:var(--a);font-size:.75rem}
+.bmatch.played .bm-team{opacity:.7}
+.bmatch .bm-flag{font-size:.7rem}
+.bmatch .sep{font-size:.5rem;color:var(--m);margin:0 1px}
+.connector{display:flex;justify-content:center;align-items:center;min-height:20px}
+.connector svg{width:30px;height:100%}
+.half-label{text-align:center;font-size:.65rem;font-weight:700;padding:8px 0 2px;color:var(--a)}
+.half-label.up{border-bottom:2px solid var(--a)}
+.half-label.dn{border-top:2px solid var(--a);margin-top:4px}
 @media print{body{background:#fff;color:#000;font-size:8pt}.bnav,.tb,.btt,.header{display:none!important}.mr{border:1px solid #ccc}}
 </style>
 </head>
@@ -310,60 +329,121 @@ function resolveTeam(label){
   return label;
 }
 
-function renderBracket(){
-  const gs=getGroupStandings();
-  // Build bracket tree data structure
-  const rounds=['R32','R16','QF','SF'];
-  const rLabels={'R32':'1/16决赛','R16':'1/8决赛','QF':'1/4决赛','SF':'半决赛'};
-  const roundMatches={};rounds.forEach(r=>roundMatches[r]=KO.filter(m=>m[5]===r));
+function flagEmoji(name){
+  const m={'阿根廷':'🇦🇷','巴西':'🇧🇷','法国':'🇫🇷','英格兰':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','德国':'🇩🇪','西班牙':'🇪🇸','葡萄牙':'🇵🇹','荷兰':'🇳🇱','比利时':'🇧🇪','美国':'🇺🇸','墨西哥':'🇲🇽','加拿大':'🇨🇦','日本':'🇯🇵','韩国':'🇰🇷','克罗地亚':'🇭🇷','乌拉圭':'🇺🇾','摩洛哥':'🇲🇦','瑞士':'🇨🇭','哥伦比亚':'🇨🇴','塞内加尔':'🇸🇳','瑞典':'🇸🇪','挪威':'🇳🇴','土耳其':'🇹🇷','埃及':'🇪🇬','奥地利':'🇦🇹','苏格兰':'🏴󠁧󠁢󠁳󠁣󠁴󠁿','澳大利亚':'🇦🇺','巴拉圭':'🇵🇾','伊朗':'🇮🇷','沙特':'🇸🇦','南非':'🇿🇦','卡塔尔':'🇶🇦','捷克':'🇨🇿','新西兰':'🇳🇿','伊拉克':'🇮🇶','加纳':'🇬🇭','阿尔及利亚':'🇩🇿','巴拿马':'🇵🇦','约旦':'🇯🇴','波黑':'🇧🇦','突尼斯':'🇹🇳','佛得角':'🇨🇻','海地':'🇭🇹','库拉索':'🇨🇼','民主刚果':'🇨🇩','乌兹别克':'🇺🇿','科特迪瓦':'🇨🇮','厄瓜多尔':'🇪🇨'};
+  return m[name]||'';
+}
+function buildBracketMatch(mn,team1,team2,isFinal){
+  const res=GR(mn);const hasRes=!!res;
+  let t1=team1,t2=team2,score='VS';
+  if(res){score=`${res.t1s}-${res.t2s}`;}
+  const f1=flagEmoji(t1),f2=flagEmoji(t2);
+  return`<div class="bmatch${hasRes?' played':''}" onclick="openMD('${mn}')">
+    <div class="bm-info">${isFinal==='F'?'🏆':isFinal==='3rd'?'🥉':''} ${mn}</div>
+    <div class="bm-teams"><span class="bm-team">${f1} ${t1}</span></div>
+    <div class="bm-score">${score}</div>
+    <div class="bm-teams"><span class="bm-team">${f2} ${t2}</span></div>
+  </div>`;
+}
 
-  // Render tree columns left to right
-  let h='<div style="overflow-x:auto;padding:8px 0;-webkit-overflow-scrolling:touch"><div style="display:flex;gap:4px;min-width:1000px;padding:0 4px">';
-  rounds.forEach(r=>{
-    const ms=roundMatches[r];
-    const cw=r==='R32'?105:r==='R16'?110:r==='QF'?115:120;
-    h+=`<div style="flex:1;min-width:${cw}px"><div style="text-align:center;font-size:.65rem;color:var(--a);font-weight:700;padding:6px 0 4px">${rLabels[r]}</div>`;
-    ms.forEach((m,i)=>{
-      const[mn,date,,,mu]=m;const s=SS(m[6]);const res=GR(mn);
-      // Resolve team names from labels
-      const parts=mu.split(' vs ');
-      let t1=resolveTeam(parts[0]),t2=resolveTeam(parts[1]||'');
-      // Truncate long names
-      if(t1.length>6)t1=t1.substring(0,5)+'…';
-      if(t2.length>6)t2=t2.substring(0,5)+'…';
-      let scoreTxt='VS';
-      if(res)scoreTxt=`${res.t1s}-${res.t2s}`;
-      const hasRes=!!res;
-      h+=`<div onclick="openMD('${mn}')" style="background:var(--s);border:1px solid var(--b);border-radius:6px;padding:4px 5px;margin:3px 0;cursor:pointer;font-size:.58rem;text-align:center;${hasRes?'':'opacity:.8'}">
-        <div style="font-size:.48rem;color:var(--m)">${mn}·${date}</div>
-        <div style="font-weight:600;display:flex;justify-content:space-between;gap:4px"><span style="flex:1;text-align:right">${t1}</span><span style="flex:1;text-align:left">${t2}</span></div>
-        <div style="font-weight:800;color:var(--a);font-size:.7rem;line-height:1.3">${scoreTxt}</div>
-        <div style="font-size:.45rem;color:var(--m)">${s.name.substring(0,8)}</div>
-      </div>`;
-    });
-    h+='</div>';
-  });
+function renderBracket(){
+  // Build actual qualified teams from group standings
+  const gs={};'ABCDEFGHIJKL'.split('').forEach(g=>{gs[g]=calcStandings(g);});
+
+  // R32 matchups (order: top half then bottom half)
+  // Upper half: M73(A2-B2), M75(C1-F2), M74(E1-3rd), M76(F1-C2)
+  // then M89=W74-W77, M90=W73-W75, M97=W89-W90, M101
+  // Lower half: M77(I1-3rd), M78(E2-I2), M79(A1-3rd), M80(L1-3rd), M81(D1-3rd), M82(G1-3rd), M83(K2-L2), M84(H1-J2)
+  // then M91=W76-W78, M92=W79-W80, M93=W83-W84, M94=W81-W82
+  // M98=W91-W92, M99=W93-W94, M102=W99-W100, M104
+
+  // Resolve each R32 match
+  function rTeam(mn){
+    const m=KO.find(x=>x[0]===mn);if(!m)return['?','?'];
+    const parts=m[4].split(' vs ');
+    return [resolveTeam(parts[0]),resolveTeam(parts[1]||'?')];
+  }
+  function rWinner(mn){const res=GR(mn);if(!res)return'?';const[t1,t2]=rTeam(mn);return res.t1s>res.t2s?t1:res.t2s>res.t1s?t2:t1+'/PK';}
+
+  // Build each round's resolved teams
+  const r32matches=[
+    {mn:'M73',t:rTeam('M73')},{mn:'M75',t:rTeam('M75')},{mn:'M74',t:rTeam('M74')},{mn:'M76',t:rTeam('M76')},
+    {mn:'M77',t:rTeam('M77')},{mn:'M78',t:rTeam('M78')},{mn:'M79',t:rTeam('M79')},{mn:'M80',t:rTeam('M80')},
+    {mn:'M81',t:rTeam('M81')},{mn:'M82',t:rTeam('M82')},{mn:'M83',t:rTeam('M83')},{mn:'M84',t:rTeam('M84')},
+    {mn:'M85',t:rTeam('M85')},{mn:'M86',t:rTeam('M86')},{mn:'M87',t:rTeam('M87')},{mn:'M88',t:rTeam('M88')},
+  ];
+  const r16matches=[
+    {mn:'M90',t:[rWinner('M73'),rWinner('M75')]},
+    {mn:'M89',t:[rWinner('M74'),rWinner('M77')]},
+    {mn:'M91',t:[rWinner('M76'),rWinner('M78')]},
+    {mn:'M92',t:[rWinner('M79'),rWinner('M80')]},
+    {mn:'M93',t:[rWinner('M83'),rWinner('M84')]},
+    {mn:'M94',t:[rWinner('M81'),rWinner('M82')]},
+    {mn:'M95',t:[rWinner('M86'),rWinner('M88')]},
+    {mn:'M96',t:[rWinner('M85'),rWinner('M87')]},
+  ];
+  const qfmatches=[
+    {mn:'M97',t:[rWinner('M89'),rWinner('M90')]},
+    {mn:'M98',t:[rWinner('M91'),rWinner('M92')]},
+    {mn:'M99',t:[rWinner('M93'),rWinner('M94')]},
+    {mn:'M100',t:[rWinner('M95'),rWinner('M96')]},
+  ];
+  const sfmatches=[
+    {mn:'M101',t:[rWinner('M97'),rWinner('M98')]},
+    {mn:'M102',t:[rWinner('M99'),rWinner('M100')]},
+  ];
+  const fmatches=[
+    {mn:'M104',t:[rWinner('M101'),rWinner('M102')],type:'F',label:'🏆 决赛'},
+    {mn:'M103',t:['L-'+rWinner('M101'),'L-'+rWinner('M102')],type:'3rd',label:'🥉 三四名'},
+  ];
+
+  let h='<div class="bwrap"><div class="btree">';
+
+  // R32 column - split into upper/lower halves
+  h+=`<div class="bcol wide"><div class="rhdr">1/16决赛</div>`;
+  h+=`<div class="half-label up">⬆ 上半区</div>`;
+  for(let i=0;i<8;i++){const m=r32matches[i];h+=buildBracketMatch(m.mn,m.t[0],m.t[1]);}
+  h+=`<div class="half-label dn">⬇ 下半区</div>`;
+  for(let i=8;i<16;i++){const m=r32matches[i];h+=buildBracketMatch(m.mn,m.t[0],m.t[1]);}
+  h+='</div>';
+
+  // R16 column
+  h+=`<div class="bcol"><div class="rhdr">1/8决赛</div>`;
+  h+=`<div style="flex:1"></div>`;
+  for(let i=0;i<4;i++){h+=buildBracketMatch(r16matches[i].mn,r16matches[i].t[0],r16matches[i].t[1]);}
+  h+=`<div style="min-height:20px"></div>`;
+  for(let i=4;i<8;i++){h+=buildBracketMatch(r16matches[i].mn,r16matches[i].t[0],r16matches[i].t[1]);}
+  h+=`<div style="flex:1"></div></div>`;
+
+  // QF column
+  h+=`<div class="bcol"><div class="rhdr">1/4决赛</div>`;
+  h+=`<div style="flex:1"></div>`;
+  for(let i=0;i<2;i++){h+=buildBracketMatch(qfmatches[i].mn,qfmatches[i].t[0],qfmatches[i].t[1]);}
+  h+=`<div style="min-height:20px"></div>`;
+  for(let i=2;i<4;i++){h+=buildBracketMatch(qfmatches[i].mn,qfmatches[i].t[0],qfmatches[i].t[1]);}
+  h+=`<div style="flex:1"></div></div>`;
+
+  // SF column
+  h+=`<div class="bcol"><div class="rhdr">半决赛</div>`;
+  h+=`<div style="flex:1"></div>`;
+  h+=buildBracketMatch(sfmatches[0].mn,sfmatches[0].t[0],sfmatches[0].t[1]);
+  h+=`<div style="min-height:20px"></div>`;
+  h+=buildBracketMatch(sfmatches[1].mn,sfmatches[1].t[0],sfmatches[1].t[1]);
+  h+=`<div style="flex:1"></div></div>`;
+
   // Final column
-  const finalMs=KO.filter(m=>m[5]==='F'||m[5]==='3rd');
-  h+=`<div style="flex:1;min-width:120px"><div style="text-align:center;font-size:.65rem;color:var(--a);font-weight:700;padding:6px 0 4px">决赛</div>`;
-  finalMs.forEach(m=>{
-    const[mn,,,,mu]=m;const res=GR(mn);
-    const parts=mu.split(' vs ');
-    let t1=resolveTeam(parts[0]),t2=resolveTeam(parts[1]||'');
-    let scoreTxt='VS';if(res)scoreTxt=`${res.t1s}-${res.t2s}`;
-    h+=`<div onclick="openMD('${mn}')" style="background:var(--s);border:1px solid var(--b);border-radius:6px;padding:4px 5px;margin:3px 0;cursor:pointer;font-size:.58rem;text-align:center">
-      <div style="font-size:.48rem;color:var(--m)">${m[5]==='F'?'🏆决赛':'🥉三四名'} ${mn}</div>
-      <div style="font-weight:600"><span>${t1}</span> vs <span>${t2}</span></div>
-      <div style="font-weight:800;color:var(--a);font-size:.7rem">${scoreTxt}</div>
-    </div>`;
-  });
+  h+=`<div class="bcol"><div class="rhdr">决赛</div>`;
+  h+=`<div style="flex:1"></div>`;
+  fmatches.forEach(fm=>h+=buildBracketMatch(fm.mn,fm.t[0],fm.t[1],fm.type));
+  h+=`<div style="flex:1"></div></div>`;
+
   h+='</div></div>';
-  // Bottom match list
+
+  // Bottom list
   h+='<div style="padding:8px"><div style="font-size:.75rem;color:var(--a);font-weight:700;padding:4px 0">全部淘汰赛对阵</div>';
   const allStages={'R32':'1/16决赛','R16':'1/8决赛','QF':'1/4决赛','SF':'半决赛','3rd':'三四名决赛','F':'决赛'};
   Object.entries(allStages).forEach(([k,v])=>{
-    const ms=KO.filter(m=>m[5]===k);
-    ms.forEach(m=>h+=buildMatchRow(m,true));
+    KO.filter(m=>m[5]===k).forEach(m=>h+=buildMatchRow(m,true));
   });
   h+='</div>';
   document.getElementById('content').innerHTML=h;
