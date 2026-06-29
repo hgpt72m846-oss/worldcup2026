@@ -1,7 +1,32 @@
 {
-  "updated": "2026-06-27T05:07:35.803881+00:00",
+  "updated": "2026-06-29T20:19:37.252385+00:00",
   "source": "ESPN",
   "matches": {
+    "M68": {
+      "t1s": 2,
+      "t2s": 1,
+      "state": "post"
+    },
+    "M67": {
+      "t1s": 0,
+      "t2s": 2,
+      "state": "post"
+    },
+    "M69": {
+      "t1s": 0,
+      "t2s": 0,
+      "state": "post"
+    },
+    "M71": {
+      "t1s": 3,
+      "t2s": 3,
+      "state": "post"
+    },
+    "M72": {
+      "t1s": 1,
+      "t2s": 3,
+      "state": "post"
+    },
     "M61": {
       "t1s": 1,
       "t2s": 4,
@@ -220,61 +245,6 @@
     "M19": {
       "t1s": 3,
       "t2s": 0,
-      "state": "post"
-    },
-    "M13": {
-      "t1s": 0,
-      "t2s": 0,
-      "state": "post"
-    },
-    "M14": {
-      "t1s": 1,
-      "t2s": 1,
-      "state": "post"
-    },
-    "M15": {
-      "t1s": 1,
-      "t2s": 1,
-      "state": "post"
-    },
-    "M16": {
-      "t1s": 2,
-      "t2s": 2,
-      "state": "post"
-    },
-    "M9": {
-      "t1s": 7,
-      "t2s": 1,
-      "state": "post"
-    },
-    "M11": {
-      "t1s": 2,
-      "t2s": 2,
-      "state": "post"
-    },
-    "M10": {
-      "t1s": 1,
-      "t2s": 0,
-      "state": "post"
-    },
-    "M12": {
-      "t1s": 5,
-      "t2s": 1,
-      "state": "post"
-    },
-    "M4": {
-      "t1s": 1,
-      "t2s": 1,
-      "state": "post"
-    },
-    "M5": {
-      "t1s": 1,
-      "t2s": 1,
-      "state": "post"
-    },
-    "M6": {
-      "t1s": 0,
-      "t2s": 1,
       "state": "post"
     }
   }
